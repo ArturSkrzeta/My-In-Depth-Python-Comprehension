@@ -249,8 +249,8 @@ print(id(list2))
 										- variables: <code>list1</code> and <code>list2</code> points to the same obejct,<br>
 										- because of mutable nature of Python list, when appending, we still append to the same object no matter which variable we use to refer to it.
 										</li>
-										<li>
-
+										<li>Let see short comparison of mutability with immutability:
+											<br>
 											<table>
 												<thead>
 													<tr>
@@ -273,10 +273,59 @@ print(id(list2))
 													</tr>
 												</tbody>
 											</table>
-
-
 										</li>
+									</ul>
 
+
+									<h5>Mutable default arguments:</h5>
+									<ul>
+										<li>Passing empty list as a defualt argument
+<!-- start -->
+<pre>
+def add_employee(emp, emp_list=[]):
+  emp_list.append(emp)
+
+print(add_employee.__defaults__)
+# ([],)
+
+add_employee('Artur')
+print(add_employee.__defaults__)
+# (['Artur'],)
+
+add_employee('John')
+print(add_employee.__defaults__)
+# (['Artur', 'John'],)
+
+</pre>
+<!-- end -->
+											- Function creates empty list by default when we don't pass a list during the function's call.<br>
+											- Function <code>add_employee</code> creates empty list by default only once. As the list is a mutable object, it's being mutated by the function on every call.
+										</li>
+										<li>Setting default list as None
+<!-- start -->
+<pre>
+def add_employee(emp, emp_list=None):
+  if emp_list is None:
+    emp_list = []
+		print(id(emp_list))
+		
+  emp_list.append(emp)
+
+print(add_employee.__defaults__)
+# (None,)
+
+add_employee('Artur')
+print(add_employee.__defaults__)
+# (None,)
+
+add_employee('John')
+print(add_employee.__defaults__)
+# (None,)
+
+</pre>
+<!-- stop -->
+											- if condition in the <code>add_employee</code> function checks if a list passed to the function, if not then <code>emp_list is None</code> is <code>True</code> and it creates a new empty object list instead
+										</li>
 									</ul>
 
 
