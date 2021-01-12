@@ -50,6 +50,41 @@
 										<h3>Intro</h3>
 										<p style="text-align: justify;">In this section, I describe all my knowledge on Python I have managed to gather so far. It contains Python pure architecture, concepts and language-specific properties.</p>
 
+										<h5>Python:</h5>
+										<ul>
+											<li>Pyhon is the interpreted programming language and its interpreter runs code from top to bottom, from right to left linearly.
+												Almost everything is executable during run-time of code.
+												This is in opostion to Java or C where entire code is complied by the compiler to the machine's bucekt of bits.
+											</li>
+											<li>For example Python's class in simply executable code during runtime:
+												<br>
+<!-- start -->
+<pre>
+for _ in range(10)
+  class Base:
+    pass
+</pre>
+<!-- end -->
+												- The code above defines <code>class Base</code> 10 times as the for loop goes.
+											</li>
+											<li>Everything in Pyton is an object:
+												<br>
+<!-- start -->
+<pre>
+def add(x,y):
+  return x + y
+
+add
+
+----------
+# output
+# &ltfunction add at 0x002F6850&gt
+
+</pre>
+<!-- end -->
+												- Python interpreter can tell us where the functions as the object is located in the memeory (output above).
+											</li>
+										</ul>
 									</header>
 								</div>
 							</section>
@@ -167,6 +202,24 @@ print(id(str2))
 										- Once <code>str2</code> modified, then a new object is created in the new memory location.<br>
 										- So basically, <code>'welcome'</code> is one object in the memory but <code>'welcome to python'</code> is another object in defferent place in the memory.<br>
 										</li>
+										<li>Tuples are immutable:
+<!-- strat -->
+<pre>
+t1 = (1,2,3)
+t2 = t1
+t1 = (3,4,5)
+
+print(id(t1))
+# 19772804
+
+print(id(t2))
+# 19772808
+
+</pre>
+<!-- stop	-->
+										- When <code>t2 = t1</code> then both variables tags the same object of <code>(1,2,3)</code>.<br>
+										- When <code>t1 = (3,4,5)</code> then it creates a totally new object in different memeory slot and tahs ith with <code>t1</code> name.
+										</li>
 									</ul>
 
 									<h5>Mutability:</h5>
@@ -196,7 +249,36 @@ print(id(list2))
 										- variables: <code>list1</code> and <code>list2</code> points to the same obejct,<br>
 										- because of mutable nature of Python list, when appending, we still append to the same object no matter which variable we use to refer to it.
 										</li>
+										<li>
+
+											<table>
+												<thead>
+													<tr>
+														<th>Mutability</th>
+														<th>Immutability</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>List, Set, Dictionary</td>
+														<td>String, Number, Tuples</td>
+													</tr>
+													<tr>
+														<td>Updating one memory location when modifing variable.</td>
+														<td>Creating new memory location when modifing variable.</td>
+													</tr>
+													<tr>
+														<td>Modifing the same object.</td>
+														<td>Creating a new object.</td>
+													</tr>
+												</tbody>
+											</table>
+
+
+										</li>
+
 									</ul>
+
 
 									<!-- <h5>...</h5>
 									<ul>
