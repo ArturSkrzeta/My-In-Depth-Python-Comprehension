@@ -67,7 +67,7 @@ for _ in range(10)
 <!-- end -->
 												- The code above defines <code>class Base</code> 10 times as the for loop goes.
 											</li>
-											<li>Everything in Pyton is an object:
+											<li>Everything in Python is an object:
 												<br>
 <!-- start -->
 <pre>
@@ -84,7 +84,57 @@ add
 <!-- end -->
 												- Python interpreter can tell us where the functions as the object is located in the memeory (output above).
 											</li>
+											<li>Python supports both Object-oriented Programming (OOP) and Functional Programming (FP):
+												<br><br>
+												<table>
+													<thead>
+														<tr>
+															<th>OOP</th>
+															<th>FP</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>Object creation and manipulation with specific methods.</td>
+															<td>Function can be used as <b>first class object</b>.</td>
+														</tr>
+														<tr>
+															<td>Object-oriented featured like inheritance, encapsultaion, polymorphism.</td>
+															<td>Supports lambda function characteristic for functional paradigm.</td>
+														</tr>
+													</tbody>
+												</table>
+												First class object:
+													<br>
+													- function can be treated like an object,<br>
+													- function can be assigned to a variable,<br>
+													- function can be returned by another function,<br>
+													- function can be passed as an argument to another function.
+											</li>
 										</ul>
+
+										<h5>OOP:</h5>
+										<ul>
+											<li>Special method <b>__init__</b>
+												<br>
+												- callng the class during instatiation creates instance that is being referred by the class with a key-word <b>self</b><br>
+												- in fact, <b>__init__</b> is not a constructor, it is initializer that takes an instance <b>self</b> and populates it with attributes that <b>__init__</b> receives
+<!-- start -->
+<pre>
+class User:
+
+  def __init__(self, name, surname):
+    self.name = name
+    self.surname = surname
+    selfl.email = name + '.' + surname + '@myshop.com'
+
+</pre>
+<!-- stop	-->
+												- the goal of instance variable <b>self</b> is to take unique data for an instance,<br>
+												- the goal of <b>__init__</b> is to populate the instance with that data.
+											</li>
+										</ul>
+
 									</header>
 								</div>
 							</section>
@@ -307,8 +357,8 @@ print(add_employee.__defaults__)
 def add_employee(emp, emp_list=None):
   if emp_list is None:
     emp_list = []
-    <!-- print(id(emp_list)) -->
   emp_list.append(emp)
+  return emp_list
 
 print(add_employee.__defaults__)
 # (None,)
