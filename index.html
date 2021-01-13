@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+	<!DOCTYPE HTML>
 
 <html>
 	<head>
@@ -46,10 +46,200 @@
 							<section id="one">
 								<div class="container">
 									<header class="major">
-										<h2>Keeping Python Code Clean</h2>
+										<h2>My In Depth Python Comprehension</h2>
 										<h3>Intro</h3>
-										<p>In this section, I try my best to collect and describe and first of all put down my understanding on how to implement all the techniques that contribute to the clean code of an application.<br>
-											I touch here both theoretical principles and libraries that assists with feedback on Python's syntax.</p>
+										<p style="text-align: justify;">In this section, I describe all my knowledge on Python I have managed to gather so far. It contains Python pure architecture, concepts and language-specific properties.</p>
+
+										<h5>Python:</h5>
+										<ul>
+											<li>Pyhon is the interpreted programming language and its interpreter runs code from top to bottom, from right to left linearly.
+												Almost everything is executable during run-time of code.
+												This is in opostion to Java or C where entire code is complied by the compiler to the machine's bucekt of bits.
+											</li>
+											<li>For example Python's class in simply executable code during runtime:
+												<br>
+<!-- start -->
+<pre>
+for _ in range(10)
+  class Base:
+    pass
+</pre>
+<!-- end -->
+												- The code above defines <code>class Base</code> 10 times as the for loop goes.
+											</li>
+											<li>Everything in Python is an object:
+												<br>
+<!-- start -->
+<pre>
+def add(x,y):
+  return x + y
+
+add
+
+----------
+# output
+# &ltfunction add at 0x002F6850&gt
+
+</pre>
+<!-- end -->
+												- Python interpreter can tell us where the functions as the object is located in the memeory (output above).
+											</li>
+											<li>Python supports both Object-oriented Programming (OOP) and Functional Programming (FP):
+												<br><br>
+												<table>
+													<thead>
+														<tr>
+															<th>OOP</th>
+															<th>FP</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>Object creation and manipulation with specific methods.</td>
+															<td>Function can be used as <b>first class object</b>.</td>
+														</tr>
+														<tr>
+															<td>Object-oriented featured like inheritance, encapsultaion, polymorphism.</td>
+															<td>Supports lambda function characteristic for functional paradigm.</td>
+														</tr>
+													</tbody>
+												</table>
+												First class object:
+													<br>
+													- function can be treated like an object,<br>
+													- function can be assigned to a variable,<br>
+<!-- start -->
+<pre>
+sream = print
+scream("Hello!")
+
+-----------------
+# output
+# Hello!
+</pre>
+<!-- end -->
+
+													- function can be returned by another function,<br>
+													- function can be passed as an argument to another function.<br>
+													<br>
+											</li>
+										</ul>
+
+										<h5>Namespace:</h5>
+										<ul>
+											<li>Namespace:
+<!-- start -->
+<pre>
+sream = print
+scream("Hello!")
+</pre>
+<!-- end -->
+												- Above code defines <code>scream</code> as alias for the exisiting python's <code>print</code> function.<br>
+												- Assignment of <code>scream = print</code> introduces the identifier <code>scream</code> into the current namespace with the value being the object that represents built-in function.<br>
+												- When assignment of an identifier (variable) to a value (object) happens, the definition in being made in the current namespace.<br>
+												- Pytthon implements namespace with ist onw dictionary that maps each identifier to associated object.<br>
+												- When top-level assignment - we assign variable to an object in <b>the global scope</b>.<br>
+												- When assignment within a function  - we assign variable to an object in <b>the local scope</b>.<br>
+												- Example: assignment <code>x = 5</code> within a function has no effect on the identifier <code>x</code> outside.
+											</li>
+											<li>Namespace resolution:
+												<br>
+												- Python searches three scopes for a called name:<br>
+												1. the local (L),<br>
+												2. then the global (G),<br>
+												3. the built-in (B)<br>
+												and stops at the first place the name is found.<br>
+												- In practice, when we want to access atribute using dot operator syntax, the Python interpreter runs a name resolution process that looks up for a called name, checking:<br>
+												1. local instance scope,<br>
+												2. class scope,<br>
+												3. supercalss within inheritance hierarchy,<br>
+												4. it keeps seraching, otherwise it raises <b>AttributeError</b> when not found.
+											</li>
+										</ul>
+
+										<h5>OOP:</h5>
+										<ul>
+											<li>Special method <b>__init__</b>:
+												<br>
+												- Calling the class during instatiation creates instance that is being referred by the class with a key-word <b>self</b>.<br>
+												- In fact, <b>__init__</b> is not a constructor, it is initializer that takes an instance <b>self</b> and populates it with attributes that <b>__init__</b> receives.
+<!-- start -->
+<pre>
+class User:
+
+  def __init__(self, name, surname):
+    self.name = name
+    self.surname = surname
+    self.email = name + '.' + surname + '@myshop.com'
+
+</pre>
+<!-- stop	-->
+												- The goal of instance variable <b>self</b> is to take unique data for the specific instance.<br>
+												- The goal of <b>__init__</b> is to populate the instance with that data.
+											</li>
+										</ul>
+
+										<h5>Getters and setters:</h5>
+										<ul>
+											<li><b>Getters ('accessors')</b> and <b>setters ('mutators')</b> are used in OOP for aplying the encapsulation principle.</li>
+											<li>Encapsulation means bundling attributes (data within a class) with the methods that operate on them.</li>
+											<li>According to encapsulation principle, the attributes of a class have to be set as private to hide and protect them from the other external codes.</li>
+											<li>Getters an setters simply dictate the way of accessing the class's private data.</li>
+											<li>In short, the getter is used for retrieving the data and the setter for changing the data within a class.</li>
+											<li>In Python the encapsulation matterw is solved as following:
+												<br>
+												- <u>getter</u>: the method which is used for getting a value is decorated with <u>"@property"</u>,<br>
+												- <u>setter</u>: the method which has to function as the setter is decorated with <u>"@x.setter"</u>.
+											</li>
+											<li>Code:
+
+<!-- start -->
+<pre>
+class <span style="color:#00ffea;">Circle()</span>:
+
+    version = '1.0.1'
+
+    def __init__(self, radius):
+        self.<span style="color:#ffd600;">radius</span> = radius
+
+    <span style="color:#ff6fcb;">@property</span>
+    def radius(self):
+        return self.<span style="color:#ffd600;">diameter</span> / 2
+
+    <span style="color:#ff6fcb;">@radius.setter</span>
+    def radius(self, radius):
+        self.<span style="color:#ffd600;">diameter</span> = radius * 2
+
+
+def main():
+
+    c = <span style="color:#00ffea">Circle(</span>2<span style="color:#00ffea">)</span>
+    print(c.<span style="color:#ffd600;">diameter</span>)
+    print(c.<span style="color:#ffd600;">radius</span>)
+
+    c.diameter = 6
+    print(c.<span style="color:#ffd600;">diameter</span>)
+    print(c.<span style="color:#ffd600;">radius</span>)
+
+
+if __name__ == "__main__":
+    main()
+
+---------------------
+# output
+# 4
+# 2
+# 6
+# 3
+
+</pre>
+<!-- stop	-->
+												-
+											</li>
+										</ul>
+
+
+
 									</header>
 								</div>
 							</section>
@@ -60,8 +250,7 @@
 									<h3>Features</h3>
 									<p>App includes following features:</p>
 									<ul class="feature-icons">
-										<li class="icon solid fa-check">Code snippets</li>
-										<li class="icon solid fa-check">Pylint</li>
+										<li class="icon solid fa-check">Python</li>
 									</ul>
 								</div>
 							</section>
@@ -71,483 +260,233 @@
 								<div class="container">
 									<h3>Demo</h3>
 
-									<h5>In this section I describe following concepts:</h5>
+									<h5>is operator</h5>
 									<ul>
-										<a href="#solid"><li>SOLID</li></a>
-										<a href="#dry"><li>DRY</li></a>
-										<a href="#kis"><li>KIS</li></a>
-										<a href="#yagni"><li>YAGNI</li></a>
-										<a href="#pylint"><li>Pylint</li></a>
-										<a href="#decorators"><li>Decorators</li></a>
-										<a href="#encapsulation"><li>Encapsulation</li></a>
-										<a href="#static_typing"><li>Static typing</li></a>
-									</ul>
-
-									<p id="solid" style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:4px;"><b>SOLID</b></p>
-
-									<p>SOLID is the set of good practicies that lead us to properly desing software keeping to the concept of the Object-orinted programming.</p>
-
-									<h5>Terminology:</h5>
-									<ul>
-										<li><b>Abstract class</b> is a class that contains one or more abstract methods. They cannot be instantiated and they require subclasses to provide implementations for their abstract methods.</li>
-										<li><b>Abstract method</b> is a method that is declared, but contains no implementation. Needs to be implemented by subclasses that inherits them.
-<!-- code area start -->
+										<li>Returns TRUE if two variables point to the same object:
+<!-- strat -->
 <pre>
-from abc import ABC, abstractmethod
+a = 'Hello World'
+c = a
 
-class <span style="color:#00ffea">Save</span>(ABC):
+print(type(a))
+# &ltclass 'str'&gt
 
-@abstractmethod
-def save_data(self):
-	print("Saving data...")
+print(id(a))
+# 2807808
 
-class SaveToDb(<span style="color:#00ffea">Save</span>):
+print(id(c))
+# 2807808
 
-def save_data(self):
-	super().do_something()
-	print("to database.")
+print(a is c)
+# True
 
-x = SaveToDb()
-x.save_data()
-
--------------------------
-# output:
-# Saving data...
-# to database.</pre>
-<!-- code area stop -->
-											- <b>Save</b> abstract class defines abstract method <b>save_data</b>,<br>
-											- <b>SaveToDb</b> class implements <b>save_data</b> method and extends it with additional functionality.
-										</li>
-										<li><b>Inheritance</b> - child class inherits all of the attributes and methods of parent class.
-												However, everything that is inherited by child class can be extended in order to fit requirements that child class has to fulfil.
-												In such case there in a need to re-implement the method in the child class which is called the <b>method overriding</b>.
-												In the above code section, the child class SaveToDb inherits from the parent class Save.</li>
-										<li><b>Polymorphism</b> - naming methods the same in child class means that the same function can be used by different types/classes that inheritns from a base class .</li>
-									</ul>
-
-									<h5>Single Responsibility Principle (SRP):</h5>
-									<ul>
-										<li><code>Every class should only have one responsibility</code><br>
-												<code>and therefore only one reason to change.</code></li>
-										<li>In other words, a class is responsible for performing only one specified task.</li>
-										<li>Too many tasks within a class would cause to much complexity and change of one task can affect another task's work.</li>
-										<li>When multiple tasks in a class and there is a new requirement from the business, it forces us to modify existing code which violates rest of SOLID principles.</li>
-										<li>With this SRP, maintaining the code is much easier and readable when handing code over.</li>
-										<li>When class perfoms only one task, it is much easiser to test it out.</li>
-										<li>SRP enables flexibility in extending the application with new business requirements.</li>
-									</ul>
-
-									<h5>Open Closed Principle (OCP):</h5>
-									<ul>
-										<li><code>Software Entities (classes, functions, modules)</code><br>
-												<code>should be open for extension but closed to change.</code></li>
-										<li>Without OCP, when a new business requirement comes in, the most common approach is modifing the definition of existing method.</li>
-										<li>Keeping modifying definition of extisting functunality we end up testing the enire scope repeatedly.</li>
-										<li>When following OCP, instead of modifying, we should extend the aplication to satisfy the new requirement.</li>
-										<li>Avoiding modifying, we are less likely to introduce some bugs into the existing code as well as we avoinding redeploying the same code again and again.</li>
-										<li>Extension can be achieved by inheritance from parent class where child class satisfies a new requirement.
-											<br>
-											- child class extends existing parent classes,<br>
-											- child class can override definition of parent's methods which covers a new requirements.
-										</li>
-										<li>We can be keeping an abstract class - the most general one that will never be instantiated but will be a pattern to inherit from by sub-classes where each sub-class answers specific business requirement.</li>
-									</ul>
-
-									<h5>Liskov's Substitution Principle (LSP):</h5>
-									<ul>
-										<li><code>If S is a subtype of T, then objects of type T</code><br>
-												<code>may be replaced with objects of Type S.</code></li>
-										<li>This principle is strictly related to proper inheritnace where any child class can replace its parent class without breaking functionality.
-<!-- code area start -->
-<pre>
-class <span style="color:#00ffea">Vehicle</span>:
-def count_wheels(self):
-	pass
-
-class Car(<span style="color:#00ffea">Vehicle</span>):
-def count_wheels(self):
-	pass
-
-class Truck(<span style="color:#00ffea">Vehicle</span>):
-def count_wheels(self):
-	pass
-
-def vehicle_wheels_count(<span style="color:#ffe200">vehicles</span>):
-for viehicle in <span style="color:#ffe200">vehicles</span>:
-	print(viehicle.count_wheels())
-
-def main():
-<span style="color:#ffe200">vehicles</span> = [Car(), Car(), Truck()]
-vehicle_wheels_count(<span style="color:#ffe200">vehicles</span>)</pre>
-<!-- code area stop -->
-												- <b>Vehicle</b> class defines count_wheels method,<br>
-												- every child class that inherits from Vehicle parent class implements <b>count_wheels</b> method,<br>
-												- count_wheels method can be extended due to subclass's specification as car's wheels will be counted differently than truck's wheels,<br>
-												- the method <b>vehicle_wheels_count</b> doesn't care about type of passed object, it just calls count_wheels method on every object of the passed list,<br>
-												- all the method vehicle_wheels_count knows is that each object in the passed list must be of the Vehicle type, regardless of it is from Vehicle parent's class itself or from child class (Car, Truck).
-										</li>
-									</ul>
-
-									<h5>Interface Segregation Principle (ISP):</h5>
-									<ul>
-										<li><code>Clients should not be forced to depend upon interfaces that they do not use</code></li>
-										<li>Interface is a class-like structure that lists what methods needs to be implemented by a class that makes usage of this interface.
-												Like I said, it only indicates the methods, interface doesn't define their implementation - this is job for the class. </li>
-										<li>In Python, there is no interface as such. However, Python allows to implement abstract class with usage of abc module.
-											<br>
-											- we cannot instantiate an abstract class,<br>
-											- abstract class defines methods that needs to be implemented in all of the child classes that inherits from it,<br>
-											- with using abract classes we can be creating Python's interface-like structures.
-										</li>
-										<li>Lets set up scenario where there is a big interace that has multiple abstract methods:
-											<br>
-											- class that uses that interface needs to implement all of the abstract methods (in Python, it is required by decorator @abstractmethod),<br>
-											- however, there may be some abstract methods that our specific class doesn't need to implement,<br>
-											- implementing needless method or implementing it as <code>pass</code> violates SOLID principles,<br>
-											- following ISP, we would need to divide one main interface to several ones due to their functionality so that classes tha would use them can implement only methods that they need.
-										</li>
-									</ul>
-
-									<h5>Dependency Inversion Principle (DIP)</h5>
-									<ul>
-										<li><code>High-level modules should not depend upon low-level modules.</code><br>
-												<code>Both low and high level classes should depend on the same abstractions.</code><br>
-												<code>Abstractions should not depend on details.</code><br>
-												<code>Details should depend upon abstractions.</code><br>
-										</li>
-										<li>There are some characteristic terms for a bad code design:
-											<br>
-											- <b>Rigidity:</b> when it's hard to do some changes to the code as they affect to many parts of the application. When change necessary, it forces us to modify another dependent part of the code. Furthermore, it causes hardships with time and costs estimation for changes implementation,<br>
-											- <b>Fragility:</b> when changes being implemented causes crash of app's parts that we did not expect. It lowers trust in the project that uses the code because each another change can cause avalanche of errors from unknown sides,<br>
-											- <b>Immobility:</b> when it's impossible to use the code in another application as it's very difficult to extract it. Difficulties result from too big dependecny of code section against other ones. It happens that finding dependecies and extracting the code for reusing is more time consuming than writing it from scratch.
-										</li>
-										<li>Abstractions need to be organized is such way they don't depend on details (concrete implementations) but rather other way around - the implementations should depend on abstractions.</li>
-										<li>The main assumption over here is that implementations changes more often than the abstraction they were created on.</li>
-										<li>Low-level modules are sub-modules of a high-level module which in turn can be the low-level module for another module.</li>
-										<li>Lets take two classes A and B as the example:
-											<br>
-											- A depends on B, when B changes, it crashes the code,<br>
-											- we need to invert the dependencies and make B to adopt to A,<br>
-											- this can be achieved by implementing interface (abstract class A) and forcing code to depend on defined interface instead of a specific implementation (class B),<br>
-											- while we expect implementations to change frequently, the abstraction stays unchanged.
-										</li>
-									</ul>
-
-									<p id="dry" style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:4px;"><b>DRY</b></p>
-
-									<h5>Don't Repeat Yourself</h5>
-									<ul>
-										<li>This is general language-independent principle that aims at reducing repititions in the source code.</li>
-										<li>The same code snippet repeated in different places of the code makes project hard to mantian.
-												Even one small change or a new business requirement would force us to come through and update every section that change concerns.</li>
-										<li>The simplest way to keep a code DRY is to delegate as much repetative functionalities as possible to an external reusable function.
-												And then whenever I need this functionality to implement, I simply call the function.</li>
-										<li>With that solution, whenever I need to update some functionality, I just do this once in the function that provides is instead of going to each place it's implemented.</li>
-										<li>Code example:
-<!-- code area start -->
-<pre>
-def <span style="color:#ffe200">save_to_db()</span> -> None:
-  db.commit()
-  db.save()
-  print("saved to db")
-
-def enter_data() -> None:
-  validate_data()
-  <span style="color:#ffe200">save_to_db()</span>
-
-def exit_app() -> None:
-  <span style="color:#ffe200">save_to_db()</span>
-  logout()
 </pre>
-<!-- code area stop -->
-											- Above method save_to_db is reused in another app's methods where is a need to save some data to database.<br>
-											- Hence, only method save_to_db contains all the logic an functionality of saving data to database.
+<!-- stop	-->
+										- <code>type()</code> returns type of the object that passed variable is pointing to.<br>
+										- <code>id()</code> returns unique id of the object that variable is pointing to.
 										</li>
 									</ul>
 
-									<p id="kis" style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:4px;"><b>KIS</b></p>
-
-									<h5>Keep It Simple</h5>
+									<h5>Immutability:</h5>
 									<ul>
-										<li>Princilple advises to keep simplicity as the highest priority and avoinding complexity when programming.</li>
-										<li>There is a saying, when you come back to the code and you don't know what is happening in there, then it doesn't follow KIS principle.</li>
-										<li>It's very important principle even though it sounds like a very general one.
-											However, keeping it simple makes us aware of code simplicity which we can treat as an inverstment that returns itself when maintaining the code.</li>
-										<li>KIS is even more important when handing over the code to someone else for maintaining it.</li>
+										<li>Immutability means with every change to variable, a new object is being created.</li>
+										<li>Integers are immutable:
+<!-- strat -->
+<pre>
+a = 10
+b = a
+
+print(a)
+# 10
+
+print(b)
+# 10
+
+print(id(a))
+# 270268480
+
+print(id(b))
+# 270268480
+
+
+a = 20
+
+print(a)
+# 20
+
+print(b)
+# 10
+
+print(id(a))
+# 263059680
+
+print(id(b))
+# 263059520
+
+</pre>
+<!-- stop	-->
+										- Variables are only tags for memory locations that holds an object.<br>
+										- At the beginning variable with the name of <code>a</code> tags object <code>10</code> but further in the code the same name of the variable is then shifted to object <code>20</code>.<br>
+										- When <code>b = a</code> then both variables points to the same object so <code>id(a) == id(b)</code> is <code>True</code>.<br>
+										- When <code>a = 20</code> then this line creates a new object such that <code>id(a) == id(b)</code> is <code>False</code>.<br>
+										- So, immutability means that there is no possibility to overwrite one memory location. With every try of overwriting there is a new memory location being reserved.
+										</li>
+										<li>Strings are immutable:
+<!-- strat -->
+<pre>
+srt1 = 'welcome'
+str2 = 'welcome'
+
+print(id(str1))
+# 57660415
+
+print(id(str2))
+# 57660415
+
+str2 = str2 + ' to python'
+
+print(id(str1))
+# 57660415
+
+print(id(str2))
+# 59955200
+
+</pre>
+<!-- stop	-->
+										- At the beggining where we initialize <code>str1</code> and <code>str2</code>, they point to the same object.<br>
+										- Once <code>str2</code> modified, then a new object is created in the new memory location.<br>
+										- So basically, <code>'welcome'</code> is one object in the memory but <code>'welcome to python'</code> is another object in defferent place in the memory.<br>
+										</li>
+										<li>Tuples are immutable:
+<!-- strat -->
+<pre>
+t1 = (1,2,3)
+t2 = t1
+t1 = (3,4,5)
+
+print(id(t1))
+# 19772804
+
+print(id(t2))
+# 19772808
+
+</pre>
+<!-- stop	-->
+										- When <code>t2 = t1</code> then both variables tags the same object of <code>(1,2,3)</code>.<br>
+										- When <code>t1 = (3,4,5)</code> then it creates a totally new object in different memeory slot and tahs ith with <code>t1</code> name.
+										</li>
 									</ul>
 
-									<p id="yagni" style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:4px;"><b>YAGNI</b></p>
-
-									<h5>You Aren't Going to need it.</h5>
+									<h5>Mutability:</h5>
 									<ul>
-										<li>New code being added, should do as exact things as requirements say at the moment.</li>
-										<li>Writing lines for the future because of any potential requirements that can come in is pretty senseless as we waste the time for futher maintenance of the code that is unused and waits for requirement that, perhaps, will never come.</li>
-										<li>Making an excessive predictions and writing as flexible code as possible is pretty idle as we cannot predict everything. The art here is just adjusting flexibility to the current situation.</li>
-									</ul>
+										<li>When mutating a mutable object, we work with the same object all the time (in the same place of memory).</li>
+										<li>List are mutable:
+<!-- strat -->
+<pre>
+list1 = [1,2,3,4]
+list2 = list1
+list1.append(10)
 
-									<p id="pylint" style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:4px;"><b>Pylint</b></p>
+print(list1)
+# [1,2,3,4,10]
 
-									<h5>Pylint library</h5>
-									<ul>
-										<li>Source code analysis tool which looks for syntax errors and gives refactoring suggestions.</li>
-										<li>All we need to do is:
+print(list2)
+# [1,2,3,4,10]
+
+print(id(list1))
+# 32763496
+
+print(id(list2))
+# 32763496
+
+</pre>
+<!-- stop	-->
+										- variables: <code>list1</code> and <code>list2</code> points to the same obejct,<br>
+										- because of mutable nature of Python list, when appending, we still append to the same object no matter which variable we use to refer to it.
+										</li>
+										<li>Let see short comparison of mutability with immutability:
 											<br>
-											<code>pip install pylint</code><br>
-											and then:<br>
-											<code>pylint main.py</code><br>
-											where main.py is the module whose code we want to examine for syntax errors
-										</li>
-										<li>Code example:
-<!-- code area start -->
-<pre>
-#
-# my app version 1.6
-# by Artur
-
-class animal:
-
-  def __init__(self,name) :
-    self.name = name
-
-def rename_animal(animal1, animal2):
-  animal1.name = 'Tom'
-
-animal1 = animal('Gerry')
-
-rename_animal(animal1, my_animal)
-</pre>
-<!-- code area stop -->
-										</li>
-										<li>Pylint feedback:
-<!-- code area start -->
-<pre style="background-color:#050569;">
-************* Module main_for_pylint
-main.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-main.py:5:0: C0103: Class name "animal" doesn't conform to PascalCase naming style (invalid-name)
-main.py:5:0: C0115: Missing class docstring (missing-class-docstring)
-main.py:5:0: R0903: Too few public methods (0/2) (too-few-public-methods)
-main.py:10:0: C0116: Missing function or method docstring (missing-function-docstring)
-main.py:10:18: W0621: Redefining name 'animal1' from outer scope (line 13) (redefined-outer-name)
-main.py:10:27: W0613: Unused argument 'animal2' (unused-argument)
-main.py:15:23: E0602: Undefined variable 'my_animal' (undefined-variable)
-
---------------------------------------------------------------------
-Your code has been rated at -7.14/10 (previous run: -5.71/10, -1.43)
-</pre>
-<!-- code area stop -->
-											Here is the pylint's feedback line-by-line explanation:<br>
-											- It says that there is no such thing as introducing docstring that would describe the modeule,<br>
-											- It indicates that class name "animal" should be capitalized.<br>
-											- Once again there is no docstring describing the class.<br>
-											- It suggests the class hass too few or none of public methods.<br>
-											- Once again there is no docstring describing the function.<br>
-											- It screams that variable "animal1" in the local scope of the function is as the same as the variable in the global scope.<br>
-											- It indicates parameter "animal2" in the function "rename_animal" is not used.<br>
-											- It shows that variable "my_animal" has never been defined so it cannot be passed in the function.<br>
-											- On the bottom we can see the rate of the code and comparison how it looked like during last assessment.
-										</li>
-									</ul>
-
-									<p id="decorators" style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:4px;"><b>Decorators</b></p>
-									<h5>Decorators</h5>
-									<ul>
-										<li>Decorators extend a function's functionality without modifying its code. Decorator is simply the function that brings additional functionality to a function that already exists.</li>
-										<li>Decorators can be custiomized by a programmer or can be provided by some library that we import to our code.</li>
-										<li>Code example:
-<!-- code area start -->
-<pre>
-def extend_user_rights(func):
-  def inner():
-    func()
-    print("You have got admin rights!")
-  return inner
-
-<span style="color:#00ffea">@extend_user_rights</span>
-def ordinary_user():
-  print("Hello User!")
-
-if __name__ == "__main__":
-  ordinary_user()
-</pre>
-<!-- code area stop -->
-											- Function <b>extend_user_rights</b> extends <b>ordinary_user</b> function and give additional functionalities.<br>
-											- What kind of functionalities decorator adds can be defined in decorator's body.<br>
-											- What is the best about decorators they can be reused many times for different regular functions that, besides their own tasks, give also admin rights.
-												And as we know from DRY anything that ensures reusability contributes to having the clean code.<br>
-											- Function <b>func</b> in decorator's body is replaced by any function we want to decorate.
-										</li>
-									</ul>
-
-									<p id="encapsulation" style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:4px;"><b>Encapsulation</b></p>
-
-									<h5>Encapsulation:</h5>
-									<ul>
-										<li>It refers to object-oriented programming where we want to bind data with specific section of code.</li>
-										<li>We can think of it as if a shield that prevents data (variable) from being accessed and thus manipulated by the code outside the shield.</li>
-										<li>In practice, we hide a class variable from any other class. The variable can be accessed only through a member function of the class that owns that variable. By hiding a variable we make it private to a class that delcares it.</li>
-										<li>Some benefits:
-											<br>
-											- User of the app doesn't have any idea of inner implementation of a particualr class. He sees only what we allow him to see which is basically passing the value to a method that initializes variable with passed value. Method that initializes variable can add some logic and validation to restric values to a specific let's say range.<br>
-											- We can make a class variable as read-only or write-only as per our requirements.<br>
-											- It ensures reusability and makes easier to change it with some new requirements.
-										</li>
-										<li>Code example:
-<!-- code area start -->
-<pre>
-class Shop():
-
-  def __init__(self):
-    self.category = "Adventure"
-    self.__item = "Book"
-
-  def Product(self):
-    return self.category + ": " + self.__item
-
-  def set__item(self, name):
-    self.__item = name
-
-  def get__item(self):
-    return self.name
-
-sh = Shop()
-sh.set__item("Video")
-print(sh.Product())
-
------------------
-# output
-# Adventure: Video
-</pre>
-<!-- code area stop -->
-											- to make a variable private we need to put double scores before its name like: <code>__variable_name</code>.<br>
-											- to access the private variable we need to apply getter and setter which are member methods with access to the private variable.<br>
-										</li>
-									</ul>
-
-									<p id="static_typing" style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:4px;"><b>Static typing</b></p>
-
-									<h5>Static typing in dynamic Python:</h5>
-									<ul>
-										<li>At first, let's see overview on programming lanugages:
-											<br><br>
-											<img src="images/languages.png" width="600"><span style="font-size:12px">source: android.jlelse.eu</span>
-											<br>
-										</li>
-										<li>As we can see, Python itself is the a strong-dynamically typed pragramming language.
-												It means we don't have to declare type of variable before initializing it with a vlaue.
-												Dynamic Python follows duck typing:<br>
-												<b><i>If it walks like a duck and it quacks like a duck, then it must be a duck.</i></b>
-										<li>In other words, we don't have to call it a duck (defining its type) when it has duck's properties and methods.</li>
-										<li>When Python faces na object, assumes object's type based on properties or methods this type has declared within.
-												In case when a specific property doesn't exist and Python tryies to call it on the object then exception (error) appears.
-												However, it apperas during running the code as opposed to statically typed programming languages where compiler checks entire code before actual running.</li>
-										<li>Below code are going to be executed as long as list elements contains object of a type with <code>details</code> attriubute.
-												When loop encouters an object of a type where there is no attribute <code>details</code> declared then it throws an error.
-												Thus, it can make 100 iterations but 101 iteration can cause an error.
-<!-- code area start -->
-<pre>
-def get_detailed_info(elements):
-  for element in elements:
-    print(element.details)
-</pre>
-<!-- code area stop -->
-										</li>
-										<li>Due to dynamic Python's nature, types declaration is optional however it increses code readibility and code's correctness control.
-<!-- code area start -->
-<pre>
-from typing import List
-from element import Element
-
-def get_detailed_info(elements: <span style="color:#00ffea">List(Element)</span>) -> <span style="color:#ffe200">None</span>:
-  for element in elements:
-    print(element.details)
-</pre>
-<!-- code area stop -->
-											- What we type statically in Python most often is types of passed arguments to functions and methods as well as returned types.<br>
-											- We type also variable that is unclear, for example it's a good practice to declare types of elements in a list: <code>self.grades: List(int) = []</code><br>
-											- In fact, Python ignores types adnotations, however, in cooporation with IDE as PyCharm it highlights where declared type differs from passed type.<br>
-											- Besides PyCharm's help, there is a library called <b>mypy</b> that reads the code and lists all type's conflicts. We just need to install it: <code>pip install mypy</code> and use it: <code>mypy main.py</code>.
-										</li>
-										<li>Let's languages set
-											<br><br>
-											<img src="images/dynamic_vs_static.png" width="620"><span style="font-size:12px">source: itnext.io</span>
-											<br><br>
-											- As projet gets bigger, the productivity of maintaining it in dynamically tiping decreases and costs increase.
-											We will eventually hit a point where there is just too much to try (type) and catch (error) as it is in dynamic language.<br>
-											- In addition, with no types addnotations code refactoring may become a big challange when you or someone else comes back to an old code because you have no idea what is the data structure of each variable.<br>
-										</li>
-										<li>Before overall comparizon let's understand following terms:
-											- <b>Source code</b>: original code (usually typed by a human into a computer).<br>
-											- <b>Translating</b>: converting source code into machine code.<br>
-											- <b>Run-time</b>: period when program is executing commands (after compilation, if compiled.)<br>
-											- <b>Complied</b>: code translated before run-time.<br>
-											- <b>Interpreted</b>: code translated on the fly, during execution.<br>
-										</li>
-										<li>Let's see the actual comparison:
-											<br><br>
 											<table>
 												<thead>
 													<tr>
-														<th>Static typing</th>
-														<th>Dynamic typing</th>
+														<th>Mutability</th>
+														<th>Immutability</th>
 													</tr>
 												</thead>
 												<tbody>
 													<tr>
-														<td>Types checked before run-time.</td>
-														<td>Types checked on the fly, during execution.</td>
+														<td>List, Set, Dictionary</td>
+														<td>String, Number, Tuples</td>
 													</tr>
 													<tr>
-														<td>Runs faster because of not needing to check types while executing.</td>
-														<td>Runs slower because of dynamic type checking.</td>
+														<td>Updating one memory location when modifing variable.</td>
+														<td>Creating new memory location when modifing variable.</td>
 													</tr>
 													<tr>
-														<td>At first there is a delay before running for type-checking.</td>
-														<td>No delays as there is no preceding type-checking.</td>
-													</tr>
-													<tr>
-														<td>Prevents variables from changing types</td>
-														<td>Allows variables to change types further in the code.</td>
-													</tr>
-													<tr>
-														<td>Catches errors early.</td>
-														<td>Catches errors during execution.</td>
+														<td>Modifing the same object.</td>
+														<td>Creating a new object.</td>
 													</tr>
 												</tbody>
 											</table>
-											<br><br>
-
-											- However, we need to distinguish Compiled and Interpreted:<br><br>
-
-											<table>
-												<thead>
-													<tr>
-														<th>Compiled</th>
-														<th>Interpreted</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>Fast to develop (edit and run)</td>
-														<td>Slow to develop (edit, compile, link and run)</td>
-													</tr>
-													<tr>
-														<td>Code translated into binary code before run-time.</td>
-														<td>Code being translated on the fly, during execution.</td>
-													</tr>
-													<tr>
-														<td>Slow to execute because each statement had to be interpreted into machine code every time it was executed</td>
-														<td>Fast to execute. The whole program is already in native machine code</td>
-													</tr>
-													<tr>
-														<td>More convenient for static languages.</td>
-														<td>More convenient for dynamic languages.</td>
-													</tr>
-												</tbody>
-											</table>
-
 										</li>
 									</ul>
 
+
+									<h5>Mutable default arguments:</h5>
+									<ul>
+										<li>Passing empty list as a defualt argument
+<!-- start -->
+<pre>
+def add_employee(emp, emp_list=[]):
+  emp_list.append(emp)
+
+print(add_employee.__defaults__)
+# ([],)
+
+add_employee('Artur')
+print(add_employee.__defaults__)
+# (['Artur'],)
+
+add_employee('John')
+print(add_employee.__defaults__)
+# (['Artur', 'John'],)
+
+</pre>
+<!-- end -->
+											- Function creates empty list by default when we don't pass a list during the function's call.<br>
+											- Function <code>add_employee</code> creates empty list by default only once. As the list is a mutable object, it's being mutated by the function on every call.
+										</li>
+										<li>Setting default list as None
+<!-- start -->
+<pre>
+def add_employee(emp, emp_list=None):
+  if emp_list is None:
+    emp_list = []
+  emp_list.append(emp)
+  return emp_list
+
+print(add_employee.__defaults__)
+# (None,)
+
+add_employee('Artur')
+print(add_employee.__defaults__)
+# (None,)
+
+add_employee('John')
+print(add_employee.__defaults__)
+# (None,)
+
+</pre>
+<!-- stop -->
+											- if condition in the <code>add_employee</code> function checks if a list passed to the function, if not then <code>emp_list is None</code> is <code>True</code> and it creates a new empty object list instead
+										</li>
+									</ul>
+
+
+									<!-- <h5>...</h5>
+									<ul>
+										<li>...</li>
+									</ul> -->
 
 								</div>
 							</section>
@@ -556,11 +495,11 @@ def get_detailed_info(elements: <span style="color:#00ffea">List(Element)</span>
 							<section id="four">
 								<div class="container">
 									<h3>Setup</h3>
-									<p>No specific installation required.</p>
+									<p>Python libraries installation required:</p>
+									<code>...</code><br>
 								</div>
 							</section>
 
-						<!-- Five -->
 							<section id="five">
 								<div class="container">
 									<h3>Source Code</h3>
