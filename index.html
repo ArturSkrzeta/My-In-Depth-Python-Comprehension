@@ -462,7 +462,7 @@ else:
 # EAFP
 try:
   print(f"I'm {person['name']}, I'm {person['age']} and I work as {person['job']}")
-exceot KeyError as e:
+except KeyError as e:
   print(f"Missing {e} key")
 
 </pre>
