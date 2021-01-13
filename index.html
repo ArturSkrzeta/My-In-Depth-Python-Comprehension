@@ -364,6 +364,111 @@ if __name__ == "__main__":
 											<li>This is perfect solution for dynamic languages, however not allowed in a compiled language.</li>
 										</ul>
 
+										<h5>Easier to Ask Forgiveness than Permission (EAFP):</h5>
+										<ul>
+											<li>When you ask for a permission then you have to access object multiple tims as opposed to asking for forgiveness where you access object once.</li>
+											<li>Let's take two classes on which we will be asking first for permission and then for forgiveness:
+<!-- start -->
+<pre>
+class Robot:
+
+  def talks(self):
+    print("I'm talking.")
+
+  def walk(self):
+    print("I'm walking.")
+
+
+class Duck:
+
+  def quack(self):
+    print("Quack, quack!")
+
+  def fly(self):
+    print("Flap, flap!")
+
+</pre>
+<!-- stop -->
+											</li>
+											<li>At first we will be asking for permission with if statements. We call it <B>'Look Before You Leap (LBYL)'</b>:
+<!-- start -->
+<pre>
+def quack_and_fly(thing):
+
+  if isinstance(thing,Duck):
+    thing.quack()
+    thing.fly()
+  else:
+    print("This has to be a duck.")
+
+d = Duck()
+quack_and_fly(d)
+
+r = Robot()
+quack_and_fly(r)
+
+----------
+# output
+# Quack, quack!
+# Flap, flap!
+# This has to be a duck.
+</pre>
+<!-- stop -->
+												1. We can see thath object <code>d</code> is an insatnce of <code>Duck</code> type so we get the permission to execute Duck's methods on the objet.<br>
+												2. We can see that object <code>p</code> is not an instance of <code>Duck</code> tye so we don't get the permission to execute Duck's methods.<br>
+												3. Notice that we have to access an object each time to check its type, and once we get the permission then we access the same object one more time.
+											</li>
+											<li>Let's try to ask for forgiveness with <b>try except block</b>:
+<!-- start -->
+<pre>
+def quack_and_fly(thing):
+  try:
+    thing.quack()
+		thing.fly()
+		thing.walk()
+		thing.bark()
+	except AttributeError as e:
+	  print(e)
+
+d = Duck()
+quack_and_fly(d)
+
+r = Robot()
+quack_and_fly(r)
+
+------------
+# output
+# Quack, quack!
+# Flap, flap!
+#'Duck' object has no attribute 'walk'
+# 'Robot' object has no attribute 'quack'
+</pre>
+<!-- stop -->
+												1. Main assunption of EAFP is trying to execute the code to see what happens - if it work - grate, if not, then raise an error.<br>
+												2. This way we accessing object only once, when trying to retieve attribute on this.
+											</li>
+											<li>One more comparison EAFP vs LBYL:
+<!-- start -->
+<pre>
+
+person = {'name':'Json', 'age':23, 'job':'Software Developer'}
+
+# LBYL
+if 'name' in person and 'age' in person and 'job' in person:
+  print(f"I'm {person['name']}, I'm {person['age']} and I work as {person['job']}")
+else:
+  print("Missing some data!")
+
+# EAFP
+try:
+  print(f"I'm {person['name']}, I'm {person['age']} and I work as {person['job']}")
+exceot KeyError as e:
+  print(f"Missing {e} key")
+
+</pre>
+<!-- stop -->
+											</li>
+										</ul>
 
 
 									</header>
@@ -607,6 +712,7 @@ print(add_employee.__defaults__)
 											- if condition in the <code>add_employee</code> function checks if a list passed to the function, if not then <code>emp_list is None</code> is <code>True</code> and it creates a new empty object list instead
 										</li>
 									</ul>
+
 
 
 									<!-- <h5>...</h5>
