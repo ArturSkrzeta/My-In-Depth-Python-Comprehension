@@ -167,6 +167,51 @@ welcome_func()
 														Closure has an access to that variable even after the outer function has finished executing.
 														In this case, <code>inner_func</code> can access <code>member</code> variable in the local scope of <code>outer_fun</code>.
 											</li>
+											<li>Decorators:
+												<br>
+												- Decorator is a function that takes another functions as an argument, extends its functionality and returns another function without altering the original function's code that was passed in.<br>
+<!-- start -->
+<pre>
+def <span style="color:#00ffea;">decorator_fun(</span>original_fun<span style="color:#00ffea;">)</span>:
+    def <span style="color:#ff6fcb;">wrapper_fun(</span>*args,**kwargs<span style="color:#ff6fcb;">)</span>:
+        print(f'Wrapper executed this before {original_fun.__name__} runs.')
+        return original_fun(*args,**kwargs)
+    return <span style="color:#ff6fcb;">wrapper_fun</span>
+
+def display_info():
+    print('Displaying basic info')
+
+decorated_display_info = <span style="color:#00ffea;">decorator_fun(</span>display_info<span style="color:#00ffea;">)</span>
+decorated_display_info()
+
+--------------
+# output
+# Wrapper executed this before display_info runs.
+# Displaying basic info
+</pre>
+<!-- end -->
+												1. <code>wrapper_fun</code> is a closure that remembers passed argument to <code>decorator_fun</code> even though <code>decorator_fun</code> finishes execution first.<br>
+												2. Inside the <code>wrapper_fun</code> we append additional functionality before running original function.<br>
+												3. <code>decorator_fun(display_info)</code> returns <code>wrapper_fun</code> that is waiting to be executed and remembers <code>display_info</code> function as a passed argument to the decorator.<br>
+												4. Executing <code>decorated_display_info()</code> executes <code>wrapper_fun</code> returining <code>original_fun</code> being executed as well.
+											</li>
+											<li>Pythonic way to use decorator:
+<!-- start -->
+<pre>
+@decorator_fun
+def display_info():
+    print('Displaying basic info')
+
+display_info()
+
+-------------
+# output
+# Wrapper executed this before display_info runs.
+# Displaying basic info
+</pre>
+<!-- end -->
+												1. <code>@decorator_fun</code> means decorator applied that extend basic <code>display_info</code> function.
+											</li>
 										</ul>
 
 										<h5>Namespace:</h5>
