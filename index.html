@@ -234,7 +234,11 @@ if __name__ == "__main__":
 
 </pre>
 <!-- stop	-->
-												-
+												- <code>@radius.setter</code> sets <code>self.diameter</code> with value <code>radius * 2</code> once object instatiated.<br>
+												- To prove setter's work, I can acccess <code>diameter</code> attribute right away.<br>
+												- With <code>@property</code> I can access <code>diameter</code> attribute.<br>
+												- However I don't have access to <code>self.radius</code> directly as it's taken over by <code>@property</code> getter.<br>
+												- <code>@property</code> and <code>@radius.setter</code> encapsulates <code>self.radius</code> and makes <code>diameter</code> attribute accessible be external code.
 											</li>
 										</ul>
 
