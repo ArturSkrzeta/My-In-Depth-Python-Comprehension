@@ -162,8 +162,8 @@ scream("Hello!")
 											<li>Object - an entity encapsulating data with methods for manipulating the data.</li>
 											<li>Object implementation goes with:
 												<br>
-												- instance dictionary: hold state (data) and points to its class,<br>
-												- class dictionary: hold functions (methods) to manipulating the data.<br>
+												- <u>instance dictionary</u>: hold state (data) and points to its class,<br>
+												- <u>class dictionary</u>: hold functions (methods) to manipulating the data.<br>
 											</li>
 											<li>Special method <b>__init__</b>:
 												<br>
@@ -182,6 +182,15 @@ class User:
 <!-- stop	-->
 												- The goal of instance variable <b>self</b> is to take unique data for the specific instance.<br>
 												- The goal of <b>__init__</b> is to populate the instance with that data.
+											</li>
+											<li>inheritance</li>
+											<li>Subclass:
+												<br>
+												- A class that delegates work to another class (parentclass).<br>
+												- A subclass and its parent-class are just two different dictionaries that contain functions to manipulate the data.<br>
+												- A sublcass points to ist parent due to flow: instance dictionary - > subclass dictionary -> parent-class dictionary.<br>
+												- Using subclasses can be used as a techique for code re-use.<br>
+												- In fact, a sublcass is in charge. It decides what work gets delegated.
 											</li>
 										</ul>
 
