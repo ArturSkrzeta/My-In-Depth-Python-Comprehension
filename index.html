@@ -104,9 +104,32 @@ add
 														</tr>
 													</tbody>
 												</table>
-												First class object:
+											</li>
+											<li>First class object:
 													<br>
 													- function can be treated like an object,<br>
+													- function can be passed as an argument to another function.<br>
+<!-- start -->
+<pre>
+def square(x):
+  return x*x
+
+def my_map(func, lst):
+  result = []
+	for i in lst:
+    result.append(func(i))
+	return result
+
+squares = my_map(square, [1,2,3,4,5])
+print(squares)
+
+---------------
+# output
+# [1,4,9,16,25]
+</pre>
+<!-- end -->
+													1. <code>square</code> function has been passed to the <code>my_map</code> unexecuted (without brackets).<br>
+													2. It's being executed later in <code>my_map</code>'s body for every item in the passed list.
 													- function can be assigned to a variable,<br>
 <!-- start -->
 <pre>
@@ -118,10 +141,27 @@ scream("Hello!")
 # Hello!
 </pre>
 <!-- end -->
-
 													- function can be returned by another function,<br>
-													- function can be passed as an argument to another function.<br>
-													<br>
+<!-- start -->
+<pre>
+def outer_fun()
+  message = "Hello!"
+
+  def inner_func():
+    print(message)
+
+  return inner_func
+
+welcome_func = outer_fun()
+welcome_func()
+
+-------------
+# output
+# Hello!
+</pre>
+<!-- end -->
+												1. <code>outer_func</code> being executed returns <code>inner_func</code> that waits for its execution.<br>
+												2. <code>inner_func</code> is assigned to variable <code>welcome_func</code> which can be executed as the same as every function.
 											</li>
 										</ul>
 
