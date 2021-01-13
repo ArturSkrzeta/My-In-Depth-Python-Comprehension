@@ -424,11 +424,11 @@ quack_and_fly(r)
 def quack_and_fly(thing):
   try:
     thing.quack()
-		thing.fly()
-		thing.walk()
-		thing.bark()
-	except AttributeError as e:
-	  print(e)
+    thing.fly()
+    thing.walk()
+    thing.bark()
+  except AttributeError as e:
+    print(e)
 
 d = Duck()
 quack_and_fly(d)
