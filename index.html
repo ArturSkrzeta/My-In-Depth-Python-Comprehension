@@ -214,6 +214,18 @@ display_info()
 											</li>
 										</ul>
 
+										<h5>Variable scope:</h5>
+										<ul>
+											<li>There is a variable scope hierarchy:
+												<br>
+												1. Local scope (within a function).<br>
+												2. Enclosing scope (local scope of outer (enclosing) function).<br>
+												3. Global scope (top level of a module).<br>
+												4. Built-in.
+											</li>
+										</ul>
+
+
 										<h5>Namespace:</h5>
 										<ul>
 											<li>Namespace:
@@ -272,7 +284,10 @@ class User:
 												- The goal of instance variable <b>self</b> is to take unique data for the specific instance.<br>
 												- The goal of <b>__init__</b> is to populate the instance with that data.
 											</li>
-											<li>inheritance</li>
+											<li>Inheritance:
+												<br>
+												- ...
+											</li>
 											<li>Subclass:
 												<br>
 												- A class that delegates work to another class (parentclass).<br>
