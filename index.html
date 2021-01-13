@@ -123,6 +123,10 @@ scream("Hello!")
 													- function can be passed as an argument to another function.<br>
 													<br>
 											</li>
+										</ul>
+
+										<h5>Namespace:</h5>
+										<ul>
 											<li>Namespace:
 <!-- start -->
 <pre>
@@ -131,8 +135,21 @@ scream("Hello!")
 </pre>
 <!-- end -->
 												- Above code defines <code>scream</code> as alias for the exisiting python's <code>print</code> function.<br>
-												- Assignment of <code>scream = print</code>itroduces the identifier <code>scream</code> into the current namespace with the value being the object that represents built-in function.
-												- When assignment of identifier (variable) to value (object) happens, the definition in being made in a current namespace
+												- Assignment of <code>scream = print</code> introduces the identifier <code>scream</code> into the current namespace with the value being the object that represents built-in function.<br>
+												- When assignment of an identifier (variable) to a value (object) happens, the definition in being made in a current namespace.<br>
+												- Pytthon implements namespace with ist onw dictionary that maps each identifier to associated object.<br>
+												- When top-level assignment - we assign variable to an object in <b>the global scope</b>.<br>
+												- When assignment within a function  - we assign variable to an object in <b>the local scope</b>.<br>
+												- Example: assignment <code>x = 5</code> within a function has no effect on the identifier <code>x</code> outside.
+											</li>
+											<li>Namespace Resolution
+												<br>
+												- Python searches three scopes for a called name — the local (L), then the global (G), and then the built-in (B) — and stops at the first place the name is found.<br>
+												- When we want to access atribute using dot operator syntax, the Python interpreter runs a name resolution process that looks up for a called name, checking:<br>
+												1. local instance scope,<br>
+												2. class scope,<br>
+												3. supercalss within inheritance hierarchy,<br>
+												4. it keeps seraching, otherwise it raises <b>AttributeError</b> when not found.
 											</li>
 										</ul>
 
@@ -156,6 +173,7 @@ class User:
 												- The goal of instance variable <b>self</b> is to take unique data for an instance.<br>
 												- The goal of <b>__init__</b> is to populate the instance with that data.
 											</li>
+
 										</ul>
 
 									</header>
