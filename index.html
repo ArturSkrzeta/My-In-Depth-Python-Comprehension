@@ -144,7 +144,7 @@ scream("Hello!")
 													- function can be returned by another function,<br>
 <!-- start -->
 <pre>
-def outer_fun()
+def outer_func()
   message = "Hello!"
 
   def inner_func():
@@ -152,7 +152,7 @@ def outer_fun()
 
   return inner_func
 
-welcome_func = outer_fun()
+welcome_func = outer_func()
 welcome_func()
 
 -------------
@@ -161,7 +161,11 @@ welcome_func()
 </pre>
 <!-- end -->
 												1. <code>outer_func</code> being executed returns <code>inner_func</code> that waits for its execution.<br>
-												2. <code>inner_func</code> is assigned to variable <code>welcome_func</code> which can be executed as the same as every function.
+												2. <code>inner_func</code> is assigned to variable <code>welcome_func</code> which can be executed as the same as every function.<br>
+												3. <code>inner_func</code> is also so-called <b><u>closure</u></b> which is every inner function in the body of outer function.
+														Closure remembers and has access to variables in the local scope it was created.
+														Closure has an access to that variable even after the outer function has finished executing.
+														In this case, <code>inner_func</code> can access <code>member</code> variable in the local scope of <code>outer_fun</code>.
 											</li>
 										</ul>
 
