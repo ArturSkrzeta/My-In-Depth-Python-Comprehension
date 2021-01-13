@@ -108,8 +108,31 @@ add
 													<br>
 													- function can be treated like an object,<br>
 													- function can be assigned to a variable,<br>
+<!-- start -->
+<pre>
+sream = print
+scream("Hello!")
+
+-----------------
+# output
+# Hello!
+</pre>
+<!-- end -->
+
 													- function can be returned by another function,<br>
-													- function can be passed as an argument to another function.
+													- function can be passed as an argument to another function.<br>
+													<br>
+											</li>
+											<li>Namespace:
+<!-- start -->
+<pre>
+sream = print
+scream("Hello!")
+</pre>
+<!-- end -->
+												- Above code defines <code>scream</code> as alias for the exisiting python's <code>print</code> function.<br>
+												- Assignment of <code>scream = print</code>itroduces the identifier <code>scream</code> into the current namespace with the value being the object that represents built-in function.
+												- When assignment of identifier (variable) to value (object) happens, the definition in being made in a current namespace
 											</li>
 										</ul>
 
