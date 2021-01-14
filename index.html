@@ -668,18 +668,18 @@ print(id(list2))
 										<li>Passing empty list as a defualt argument
 <!-- start -->
 <pre>
-def add_employee(emp, emp_list=[]):
+def <span style="color:#00ffea;">add_employee(</span>emp, emp_list=[]<span style="color:#00ffea;">)</span>:
   emp_list.append(emp)
 
-print(add_employee.__defaults__)
+print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
 # ([],)
 
-add_employee('Artur')
-print(add_employee.__defaults__)
+<span style="color:#00ffea;">add_employee(</span>'Artur'<span style="color:#00ffea;">)</span>
+print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
 # (['Artur'],)
 
-add_employee('John')
-print(add_employee.__defaults__)
+<span style="color:#00ffea;">add_employee(</span>'John'<span style="color:#00ffea;">)</span>
+print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
 # (['Artur', 'John'],)
 
 </pre>
@@ -690,21 +690,21 @@ print(add_employee.__defaults__)
 										<li>Setting default list as None
 <!-- start -->
 <pre>
-def add_employee(emp, emp_list=None):
+def <span style="color:#00ffea;">add_employee(</span>emp, emp_list=None<span style="color:#00ffea;">)</span>:
   if emp_list is None:
     emp_list = []
   emp_list.append(emp)
   return emp_list
 
-print(add_employee.__defaults__)
+print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
 # (None,)
 
-add_employee('Artur')
-print(add_employee.__defaults__)
+<span style="color:#00ffea;">add_employee(</span>'Artur'<span style="color:#00ffea;">)</span>
+print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
 # (None,)
 
-add_employee('John')
-print(add_employee.__defaults__)
+<span style="color:#00ffea;">add_employee(</span>'John'<span style="color:#00ffea;">)</span>
+print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
 # (None,)
 
 </pre>
