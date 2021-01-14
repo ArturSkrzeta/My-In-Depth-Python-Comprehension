@@ -451,17 +451,17 @@ quack_and_fly(r)
 <!-- start -->
 <pre>
 
-person = {'name':'Json', 'age':23, 'job':'Software Developer'}
+<span style="color:#00ffea;">person</span> = {'name':'Json', 'age':23, 'job':'Software Developer'}
 
 # LBYL
-if 'name' in person and 'age' in person and 'job' in person:
-  print(f"I'm {person['name']}, I'm {person['age']} and I work as {person['job']}")
+if 'name' in <span style="color:#00ffea;">person</span> and 'age' in <span style="color:#00ffea;">person</span> and 'job' in <span style="color:#00ffea;">person</span>:
+  print(f"I'm {<span style="color:#00ffea;">person</span>['name']}, I'm {<span style="color:#00ffea;">person</span>['age']} and I work as {<span style="color:#00ffea;">person</span>['job']}")
 else:
   print("Missing some data!")
 
 # EAFP
 try:
-  print(f"I'm {person['name']}, I'm {person['age']} and I work as {person['job']}")
+  print(f"I'm {<span style="color:#00ffea;">person</span>['name']}, I'm {<span style="color:#00ffea;">person</span>['age']} and I work as {<span style="color:#00ffea;">person</span>['job']}")
 except KeyError as e:
   print(f"Missing {e} key")
 
