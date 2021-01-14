@@ -320,26 +320,26 @@ class <span style="color:#00ffea;">Circle()</span>:
     version = '1.0.1'
 
     def __init__(self, radius):
-        self.<span style="color:#ffd600;">radius</span> = radius
+        self.<span style="color:#f7e37e;">radius</span> = radius
 
     <span style="color:#ff6fcb;">@property</span>
     def radius(self):
-        return self.<span style="color:#ffd600;">diameter</span> / 2
+        return self.<span style="color:#f7e37e;">diameter</span> / 2
 
     <span style="color:#ff6fcb;">@radius.setter</span>
     def radius(self, radius):
-        self.<span style="color:#ffd600;">diameter</span> = radius * 2
+        self.<span style="color:#f7e37e;">diameter</span> = radius * 2
 
 
 def main():
 
     c = <span style="color:#00ffea">Circle(</span>2<span style="color:#00ffea">)</span>
-    print(c.<span style="color:#ffd600;">diameter</span>)
-    print(c.<span style="color:#ffd600;">radius</span>)
+    print(c.<span style="color:#f7e37e;">diameter</span>)
+    print(c.<span style="color:#f7e37e;">radius</span>)
 
     c.diameter = 6
-    print(c.<span style="color:#ffd600;">diameter</span>)
-    print(c.<span style="color:#ffd600;">radius</span>)
+    print(c.<span style="color:#f7e37e;">diameter</span>)
+    print(c.<span style="color:#f7e37e;">radius</span>)
 
 
 if __name__ == "__main__":
@@ -370,21 +370,21 @@ if __name__ == "__main__":
 											<li>Let's take two classes on which we will be asking first for permission and then for forgiveness:
 <!-- start -->
 <pre>
-class Robot:
+class <span style="color:#ff6fcb;">Robot</span>:
 
-  def talks(self):
+  def <span style="color:#f7e37e;">talks(</span>self<span style="color:#f7e37e;">)</span>:
     print("I'm talking.")
 
-  def walk(self):
+  def <span style="color:#f7e37e;">walk(</span>self<span style="color:#f7e37e;">)</span>:
     print("I'm walking.")
 
 
-class Duck:
+class <span style="color:#ff6fcb;">Duck</span>:
 
-  def quack(self):
+  def <span style="color:#f7e37e;">quack(</span>self<span style="color:#f7e37e;">)</span>:
     print("Quack, quack!")
 
-  def fly(self):
+  def <span style="color:#f7e37e;">fly(</span>self<span style="color:#f7e37e;">)</span>:
     print("Flap, flap!")
 
 </pre>
@@ -393,19 +393,19 @@ class Duck:
 											<li>At first we will be asking for permission with if statements. We call it <B>'Look Before You Leap (LBYL)'</b>:
 <!-- start -->
 <pre>
-def quack_and_fly(thing):
+def <span style="color:#00ffea">quack_and_fly(</span>thing<span style="color:#00ffea">)</span>:
 
   if isinstance(thing,Duck):
-    thing.quack()
-    thing.fly()
+    thing.<span style="color:#f7e37e;">quack()</span>
+    thing.<span style="color:#f7e37e;">fly()</span>
   else:
     print("This has to be a duck.")
 
-d = Duck()
-quack_and_fly(d)
+d = <span style="color:#ff6fcb;">Duck()</span>
+<span style="color:#00ffea">quack_and_fly(</span>d<span style="color:#00ffea">)</span>
 
-r = Robot()
-quack_and_fly(r)
+r = <span style="color:#ff6fcb;">Robot()</span>
+<span style="color:#00ffea">quack_and_fly(</span>r<span style="color:#00ffea">)</span>
 
 ----------
 # output
@@ -421,20 +421,20 @@ quack_and_fly(r)
 											<li>Let's try to ask for forgiveness with <b>try except block</b>:
 <!-- start -->
 <pre>
-def quack_and_fly(thing):
+def <span style="color:#00ffea">quack_and_fly(</span>thing<span style="color:#00ffea">)</span>:
   try:
-    thing.quack()
-    thing.fly()
-    thing.walk()
-    thing.bark()
+    thing.<span style="color:#f7e37e;">quack()</span>
+    thing.<span style="color:#f7e37e;">fly()</span>
+    thing.<span style="color:#f7e37e;">walk()</span>
+    thing.<span style="color:#f7e37e;">bark()</span>
   except AttributeError as e:
     print(e)
 
-d = Duck()
-quack_and_fly(d)
+d = <span style="color:#ff6fcb;">Duck()</span>
+<span style="color:#00ffea">quack_and_fly(</span>d<span style="color:#00ffea">)</span>
 
-r = Robot()
-quack_and_fly(r)
+r = <span style="color:#ff6fcb;">Robot()</span>
+<span style="color:#00ffea">quack_and_fly(</span>r<span style="color:#00ffea">)</span>
 
 ------------
 # output
