@@ -785,11 +785,11 @@ fun(s1)
 def fun(s1):
   <span style="background-color:#ad5353;">print(s1.upper())</span>
   <span style="background-color:#ad5353;">print(id(s1.upper()))</span>
-  print(s1)
-  print(id(s1))
+  <span style="background-color:#3976b3;">print(s1)</span>
+  <span style="background-color:#3976b3;">print(id(s1))</span>
 
 s1 = <span style="background-color:#3976b3;">'Artur'</span>
-<span style="background-color:#3976b3;">fun(s1)</span>
+fun(s1)
 
 <span style="background-color:#3976b3;">print(s1)</span>
 <span style="background-color:#3976b3;">print(id(s1))</span>
@@ -816,10 +816,10 @@ s1 = <span style="background-color:#3976b3;">'Artur'</span>
 										<li>It means when a function modifies an object that passed parameter refers to, the change also reflects back outside:
 <!-- start -->
 <pre>
-def fun(lst):
-  lst[0] = <span style="background-color:#ad5353;">99</span>
-  <span style="background-color:#ad5353;">print(lst)</span>
-  <span style="background-color:#ad5353;">print(id(lst))</span>
+def fun(my_list):
+  my_list[0] = <span style="background-color:#ad5353;">99</span>
+  <span style="background-color:#ad5353;">print(my_list)</span>
+  <span style="background-color:#ad5353;">print(id(my_list))</span>
 
 my_list = <span style="background-color:#3976b3;">[1, 2, 3, 4, 5]</span>
 
@@ -836,17 +836,17 @@ fun(my_list)
 # <span style="background-color:#3976b3;">43576936</span>
 </pre>
 <!-- end -->
-											- Above function gets parameter <code>lst</code> by its reference the the object in the memory.<br>
-											- Modifying first element of it affects object outside the modifing function.<br>
-											- We can see that printed out ids of the object inside and ouside the modifying function are the same.
+											- Above function gets parameter <code>my_list</code> as a reference to the object in the memory.<br>
+											- Modifying first element of it affects object outside the function.<br>
+											- We can see that ids of the object inside and ouside the function are the same.
 										</li>
 										<li>Here is the example where argument is passed by reference and the <u>reference itself</u> is being overwritten inside the called function:
 <!-- start -->
 <pre>
-def fun(lst):
-  lst = <span style="background-color:#ad5353;">[10, 11, 12, 13, 14]</span>
-  <span style="background-color:#ad5353;">print(lst)</span>
-  <span style="background-color:#ad5353;">print(id(lst))</span>
+def fun(my_list):
+  my_list = <span style="background-color:#ad5353;">[10, 11, 12, 13, 14]</span>
+  <span style="background-color:#ad5353;">print(my_list)</span>
+  <span style="background-color:#ad5353;">print(id(my_list))</span>
 
 my_list = <span style="background-color:#3976b3;">[1, 2, 3, 4, 5]</span>
 
@@ -863,9 +863,12 @@ fun(my_list)
 # <span style="background-color:#3976b3;">43522123</span>
 </pre>
 <!-- end -->
-											- Notice that the parameter <code>lst</code> is local to the <code>fun</code> function.<br>
-											- By <code>lst = [10, 11, 12, 13, 14]</code> we redirect passed reference to newly-created object of <code>[10, 11, 12, 13, 14]</code> in the memory. However the refernece and object that it points to, is only valid within local scope of changing function.<br>
-											- The object outside the changing function stays untouched.<br>
+											- Variable <code>my_list</code> is local to the <code>fun</code> function.<br>
+											- Variable <code>my_list</code> is in the global scope outside the <code>func</code>.<br>
+											- By <code>my_list = [10, 11, 12, 13, 14]</code> we create a local object of <code>[10, 11, 12, 13, 14]</code> in the memory.<br>
+											- However, the object outside the function stays untouched.<br>
+											- In the local scope of the function <code>my_list</code> tags object: <code>[10, 11, 12, 13, 14]</code>.<br>
+											- In the global scope <code>my_list</code> tags object: <code>[1, 2, 3, 4, 5]</code>.
 										</li>
 									</ul>
 
