@@ -741,8 +741,10 @@ print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
 											</tr>
 										</tbody>
 									</table>
+
+									<h5>Passing by Value:</h5>
 									<ul>
-										<li>Passing by Value:
+										<li>Here is the example of passing string object:
 <!-- start -->
 <pre>
 def fun(s1):
@@ -809,12 +811,9 @@ s1 = <span style="background-color:#3976b3;">'Artur'</span>
 										</li>
 									</ul>
 
-									<h5>Passing arguments by reference:</h5>
+									<h5>Passing by Reference:</h5>
 									<ul>
-										<li>All parameters of a function are passed by refernce.
-												That means if a function modifies an object that passed parameter refers to, the change also reflects back outside.
-										</li>
-										<li>Code:
+										<li>It means when a function modifies an object that passed parameter refers to, the change also reflects back outside:
 <!-- start -->
 <pre>
 def fun(lst):
