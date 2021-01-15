@@ -714,6 +714,7 @@ print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
 									</ul>
 
 									<h5>Passing parameters to a function:</h5>
+									<br>
 									<table>
 										<thead>
 											<tr>
@@ -768,15 +769,44 @@ fun(s1)
 # <span style="background-color:#3976b3;">11111</span>
 </pre>
 <!-- end -->
-											- Variable <code>s1</code> within the function is in local scope, however variable <code>s1</code> outside the function is in global scope.<br>
+											- Variable <code>s1</code> within the function is in local scope.<br>
+											- Variable <code>s1</code> outside the function is in global scope.<br>
  											- Passing a string into <code>fun</code> makes a copy of the object and tags it with <code>s1</code> as a local variable.<br>
 											- As a string is immutabele, code <code>s1 = "abcd"</code> creates a new object in the memory location with <code>s1</code> tag name.<br>
 											- Doing change on a copy doesn't affect the original object tagged with global variable <code>s1</code>.<br>
 											- In the local scope <code>s1</code> taggs string object of "abcd".<br>
 											- In the global scope <code>s1</code> taggs string object of "xxx".
 										</li>
+										<li>Here is another example of passing by value:
+<!-- start -->
+<pre>
+def fun(s1):
+  <span style="background-color:#ad5353;">print(s1.upper())</span>
+  <span style="background-color:#ad5353;">print(id(s1.upper()))</span>
+  print(s1)
+  print(id(s1))
 
+s1 = <span style="background-color:#3976b3;">'Artur'</span>
+<span style="background-color:#3976b3;">fun(s1)</span>
 
+<span style="background-color:#3976b3;">print(s1)</span>
+<span style="background-color:#3976b3;">print(id(s1))</span>
+---------
+# output
+
+# <span style="background-color:#ad5353;">'ARUTR'</span>
+# <span style="background-color:#ad5353;">2222222</span>
+
+# <span style="background-color:#3976b3;">'Artur'</span>
+# <span style="background-color:#3976b3;">3333333</span>
+
+# <span style="background-color:#3976b3;">'Artur'</span>
+# <span style="background-color:#3976b3;">3333333</span>
+</pre>
+<!-- end -->
+											- <code>upper()</code> in <code>fun</code> doesn't change the original object but creates a copy instead.<br>
+											- Copied object in the local scope is unchanged by <code>upper()</code> as well as the original object in the global scope stays unchanged.
+										</li>
 									</ul>
 
 									<h5>Passing arguments by reference:</h5>
