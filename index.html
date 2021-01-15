@@ -713,7 +713,66 @@ print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
 										</li>
 									</ul>
 
+									<h5>Passing arguments by reference:</h5>
+									<ul>
+										<li>All parameters of a function are passed by refernce.
+												That means if a function modifies an object that passed parameter refers to, the change also reflects back outside.
+										</li>
+										<li>Code:
+<!-- start -->
+<pre>
+def fun(lst):
+  lst[0] = <span style="background-color:#ad5353;">99</span>
+  <span style="background-color:#ad5353;">print(lst)</span>
+  <span style="background-color:#ad5353;">print(id(lst))</span>
 
+my_list = <span style="background-color:#3976b3;">[1, 2, 3, 4, 5]</span>
+
+fun(my_list)
+
+<span style="background-color:#3976b3;">print(my_list)</span>
+<span style="background-color:#3976b3;">print(id(my_list))</span>
+--------------
+# output
+# <span style="background-color:#ad5353;">[99, 2, 3, 4, 5]</span>
+# <span style="background-color:#ad5353;">43576936</span>
+
+# <span style="background-color:#3976b3;">[99, 2, 3, 4, 5]</span>
+# <span style="background-color:#3976b3;">43576936</span>
+</pre>
+<!-- end -->
+											- Above function gets parameter <code>lst</code> by its reference the the object in the memory.<br>
+											- Modifying first element of it affects object outside the modifing function.<br>
+											- We can see that printed out ids of the object inside and ouside the modifying function are the same.
+										</li>
+										<li>Here is the example where argument is passed by reference and the <u>reference itself</u> is being overwritten inside the called function:
+<!-- start -->
+<pre>
+def fun(lst):
+  lst = <span style="background-color:#ad5353;">[10, 11, 12, 13, 14]</span>
+  <span style="background-color:#ad5353;">print(lst)</span>
+  <span style="background-color:#ad5353;">print(id(lst))</span>
+
+my_list = <span style="background-color:#3976b3;">[1, 2, 3, 4, 5]</span>
+
+fun(my_list)
+
+<span style="background-color:#3976b3;">print(my_list)</span>
+<span style="background-color:#3976b3;">print(id(my_list))</span>
+--------------
+# output
+# <span style="background-color:#ad5353;">[10, 11, 12, 13, 14]</span>
+# <span style="background-color:#ad5353;">43522222</span>
+
+# <span style="background-color:#3976b3;">[1, 2, 3, 4, 5]</span>
+# <span style="background-color:#3976b3;">43522123</span>
+</pre>
+<!-- end -->
+											- Notice that the parameter <code>lst</code> is local to the <code>fun</code> function.<br>
+											- By <code>lst = [10, 11, 12, 13, 14]</code> we redirect passed reference to newly-created object of <code>[10, 11, 12, 13, 14]</code> in the memory. However the refernece and object that it points to, is only valid within local scope of changing function.<br>
+											- The object outside the changing function stays untouched.<br>
+										</li>
+									</ul>
 
 									<!-- <h5>...</h5>
 									<ul>
@@ -727,8 +786,7 @@ print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
 							<section id="four">
 								<div class="container">
 									<h3>Setup</h3>
-									<p>Python libraries installation required:</p>
-									<code>...</code><br>
+									<p>No specific installation required.</p>
 								</div>
 							</section>
 
