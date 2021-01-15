@@ -713,6 +713,72 @@ print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
 										</li>
 									</ul>
 
+									<h5>Passing parameters to a function:</h5>
+									<table>
+										<thead>
+											<tr>
+												<th>Passing by Value</th>
+												<th>Passing by Reference</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Makes a copy of passed object.</td>
+												<td>Passes an address of actual object.</td>
+											</tr>
+											<tr>
+												<td>Original object doesn't get modified.</td>
+												<td>Original object changes.</td>
+											</tr>
+											<tr>
+												<td>Creating own memory location for a copied object.</td>
+												<td>Accessing original object via address.</td>
+											</tr>
+											<tr>
+												<td>When immutable object being passed like string, integer, tuple.</td>
+												<td>When mutable object being passed like lists.</td>
+											</tr>
+										</tbody>
+									</table>
+									<ul>
+										<li>Passing by Value:
+<!-- start -->
+<pre>
+def fun(s1):
+  s1 = <span style="background-color:#ad5353;">"abcd"</span>
+  <span style="background-color:#ad5353;">print(s1)</span>
+  <span style="background-color:#ad5353;">print(id(s1))</span>
+
+s1 = <span style="background-color:#3976b3;">"xxx"</span>
+<span style="background-color:#3976b3;">print(s1)</span>
+<span style="background-color:#3976b3;">print(id(s1))</span>
+
+fun(s1)
+
+<span style="background-color:#3976b3;">print(s1)</span>
+<span style="background-color:#3976b3;">print(id(s1))</span>
+----------------
+# <span style="background-color:#3976b3;">xxx</span>
+# <span style="background-color:#3976b3;">11111</span>
+
+# <span style="background-color:#ad5353;">abcd</span>
+# <span style="background-color:#ad5353;">22222</span>
+
+# <span style="background-color:#3976b3;">xxx</span>
+# <span style="background-color:#3976b3;">11111</span>
+</pre>
+<!-- end -->
+											- Variable <code>s1</code> within the function is in local scope, however variable <code>s1</code> outside the function is in global scope.<br>
+ 											- Passing a string into <code>fun</code> makes a copy of the object and tags it with <code>s1</code> as a local variable.<br>
+											- As a string is immutabele, code <code>s1 = "abcd"</code> creates a new object in the memory location with <code>s1</code> tag name.<br>
+											- Doing change on a copy doesn't affect the original object tagged with global variable <code>s1</code>.<br>
+											- In the local scope <code>s1</code> taggs string object of "abcd".<br>
+											- In the global scope <code>s1</code> taggs string object of "xxx".
+										</li>
+
+
+									</ul>
+
 									<h5>Passing arguments by reference:</h5>
 									<ul>
 										<li>All parameters of a function are passed by refernce.
