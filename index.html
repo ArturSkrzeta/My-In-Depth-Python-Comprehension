@@ -50,11 +50,12 @@
 										<h3>Intro</h3>
 										<p style="text-align: justify;">In this section, I describe all my knowledge on Python I have managed to gather so far. It contains Python pure architecture, concepts and language-specific properties.</p>
 
-										<h5>Python:</h5>
+										<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Python</b></p>
+
 										<ul>
 											<li>Pyhon is the interpreted programming language and its interpreter runs code from top to bottom, from right to left linearly.
 												Almost everything is executable during run-time of code.
-												This is in opostion to Java or C where entire code is complied by the compiler to the machine's bucekt of bits.
+												This is in opostion to Java or C where entire code is complied by the compiler to the machine's bucekt of bits before it runs.
 											</li>
 											<li>For example Python's class in simply executable code during runtime:
 												<br>
@@ -214,7 +215,9 @@ display_info()
 											</li>
 										</ul>
 
-										<h5>Variable scope:</h5>
+
+										<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Namespace</b></p>
+
 										<ul>
 											<li>There is a variable scope hierarchy:
 												<br>
@@ -224,12 +227,7 @@ display_info()
 												4. Built-in.
 											</li>
 											<li>Local scope within a function saves us from using and, most important, from overwriting global variables.</li>
-										</ul>
-
-
-										<h5>Namespace:</h5>
-										<ul>
-											<li>Namespace:
+											<li>Working with namesapces:
 <!-- start -->
 <pre>
 sream = print
@@ -239,7 +237,7 @@ scream("Hello!")
 												- Above code defines <code>scream</code> as alias for the exisiting python's <code>print</code> function.<br>
 												- Assignment of <code>scream = print</code> introduces the identifier <code>scream</code> into the current namespace with the value being the object that represents built-in function.<br>
 												- When assignment of an identifier (variable) to a value (object) happens, the definition in being made in the current namespace.<br>
-												- Pytthon implements namespace with ist onw dictionary that maps each identifier to associated object.<br>
+												- Python implements namespaces with ist own dictionary that maps each identifier to associated object.<br>
 												- When top-level assignment - we assign variable to an object in <b>the global scope</b>.<br>
 												- When assignment within a function  - we assign variable to an object in <b>the local scope</b>.<br>
 												- Example: assignment <code>x = 5</code> within a function has no effect on the identifier <code>x</code> outside.
@@ -259,18 +257,21 @@ scream("Hello!")
 											</li>
 										</ul>
 
-										<h5>OOP:</h5>
+										<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Object-oriented programming</b></p>
+
 										<ul>
-											<li>Object - an entity encapsulating data with methods for manipulating the data.</li>
+											<li>Object is an entity encapsulating data with methods for manipulating the data.</li>
 											<li>Object implementation goes with:
 												<br>
-												- <u>instance dictionary</u>: hold state (data) and points to its class,<br>
-												- <u>class dictionary</u>: hold functions (methods) to manipulating the data.<br>
+												- <u>instance dictionary</u>: holds state (data) and points to its class,<br>
+												- <u>class dictionary</u>: holds functions (methods) for manipulating the data.<br>
 											</li>
 											<li>Special method <b>__init__</b>:
 												<br>
 												- Calling the class during instatiation creates instance that is being referred by the class with a key-word <b>self</b>.<br>
-												- In fact, <b>__init__</b> is not a constructor, it is initializer that takes an instance <b>self</b> and populates it with attributes that <b>__init__</b> receives.
+												- In fact, <b>__init__</b> is not a constructor, it is an initializer that takes an instance <b>self</b> and populates it with attributes (data) that <b>__init__</b> receives.
+											</li>
+											<li>
 <!-- start -->
 <pre>
 class User:
@@ -299,17 +300,18 @@ class User:
 											</li>
 										</ul>
 
-										<h5>Getters and setters:</h5>
+										<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Getters and setters</b></p>
+
 										<ul>
 											<li><b>Getters ('accessors')</b> and <b>setters ('mutators')</b> are used in OOP for aplying the encapsulation principle.</li>
 											<li>Encapsulation means bundling attributes (data within a class) with the methods that operate on them.</li>
-											<li>According to encapsulation principle, the attributes of a class have to be set as private to hide and protect them from the other external codes.</li>
+											<li>According to encapsulation principle, the attributes of a class have to be set as private to hide and protect them from the external code.</li>
 											<li>Getters an setters simply dictate the way of accessing the class's private data.</li>
 											<li>In short, the getter is used for retrieving the data and the setter for changing the data within a class.</li>
 											<li>In Python the encapsulation matterw is solved as following:
 												<br>
-												- <u>getter</u>: the method which is used for getting a value is decorated with <u>"@property"</u>,<br>
-												- <u>setter</u>: the method which has to function as the setter is decorated with <u>"@x.setter"</u>.
+												- <u>getter</u>: the method which is used for getting a value is decorated with <u>@property</u>,<br>
+												- <u>setter</u>: the method which has to function as the setter is decorated with <u>@x.setter</u>.
 											</li>
 											<li>Code:
 
@@ -334,12 +336,12 @@ class <span style="color:#00ffea;">Circle()</span>:
 def main():
 
     c = <span style="color:#00ffea">Circle(</span>2<span style="color:#00ffea">)</span>
-    print(c.<span style="color:#f7e37e;">diameter</span>)
-    print(c.<span style="color:#f7e37e;">radius</span>)
+    <span style="background-color:#ad5353;">print(c.<span style="color:#f7e37e;">diameter</span>)</span>
+    <span style="background-color:#ad5353;">print(c.<span style="color:#f7e37e;">radius</span>)</span>
 
     c.diameter = 6
-    print(c.<span style="color:#f7e37e;">diameter</span>)
-    print(c.<span style="color:#f7e37e;">radius</span>)
+    <span style="background-color:#3976b3;">print(c.<span style="color:#f7e37e;">diameter</span>)</span>
+    <span style="background-color:#3976b3;">print(c.<span style="color:#f7e37e;">radius</span>)</span>
 
 
 if __name__ == "__main__":
@@ -347,24 +349,26 @@ if __name__ == "__main__":
 
 ---------------------
 # output
-# 4
-# 2
-# 6
-# 3
+# <span style="background-color:#ad5353;">4</span>
+# <span style="background-color:#ad5353;">2</span>
+# <span style="background-color:#3976b3;">6</span>
+# <span style="background-color:#3976b3;">3</span>
 
 </pre>
 <!-- stop	-->
-												- <code>@radius.setter</code> sets <code>self.diameter</code> with value <code>radius * 2</code> once object instatiated.<br>
+												- <code>@radius.setter</code> sets <code>self.diameter</code> with value <code>radius * 2</code> while object creation.<br>
 												- To prove setter's work, I can acccess <code>diameter</code> attribute right away.<br>
-												- With <code>@property</code> I can access <code>diameter</code> attribute.<br>
-												- However I don't have access to <code>self.radius</code> directly as it's taken over by <code>@property</code> getter. <code>self.radius</code> is accepted only during initialization but <code>diameter</code> is being stored within a class or instances.<br>
-												- <code>@property</code> and <code>@radius.setter</code> encapsulates <code>self.radius</code> and makes <code>diameter</code> attribute accessible be external code.
+												- With <code>@property</code> I access <code>diameter</code> attribute but only the way <code>radius</code> method allows.<br>
+												- However, I don't have access to <code>self.radius</code> directly as it's taken over by <code>@property</code> getter.<br>
+												- <code>self.radius</code> is accepted only during initialization but <code>diameter</code> is being stored within a class or instances.<br>
+												- <code>@property</code> and <code>@radius.setter</code> encapsulates <code>self.radius</code> and makes <code>diameter</code> attribute accessible for external code.
 											</li>
 											<li>Going with decorators and getting rid of getters and setters traditional methods makes a class shorter and running faster.</li>
 											<li>This is perfect solution for dynamic languages, however not allowed in a compiled language.</li>
 										</ul>
 
-										<h5>Easier to Ask Forgiveness than Permission (EAFP):</h5>
+										<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Easier to Ask Forgiveness than Permission (EAFP)</b></p>
+
 										<ul>
 											<li>When you ask for a permission then you have to access object multiple tims as opposed to asking for forgiveness where you access object once.</li>
 											<li>Let's take two classes on which we will be asking first for permission and then for forgiveness:
@@ -414,8 +418,8 @@ r = <span style="color:#ff6fcb;">Robot()</span>
 # This has to be a duck.
 </pre>
 <!-- stop -->
-												1. We can see thath object <code>d</code> is an insatnce of <code>Duck</code> type so we get the permission to execute Duck's methods on the objet.<br>
-												2. We can see that object <code>r</code> is not an instance of <code>Duck</code> type so we don't get the permission to execute Duck's methods.<br>
+												1. We can see that object <code>d</code> is an insatnce of <code>Duck</code> type so we get the permission to execute Duck's methods on the objet.<br>
+												2. We can see that object <code>r</code> is not an instance of <code>Duck</code> type so we don't get the permission to execute Duck's methods on it.<br>
 												3. Notice that we have to access an object each time to check its type, and once we get the permission then we access the same object one more time.
 											</li>
 											<li>Let's try to ask for forgiveness with <b>try except block</b>:
@@ -444,7 +448,7 @@ r = <span style="color:#ff6fcb;">Robot()</span>
 # 'Robot' object has no attribute 'quack'
 </pre>
 <!-- stop -->
-												1. Main assunption of EAFP is trying to execute the code to see what happens - if it work - grate, if not, then raise an error.<br>
+												1. The main assumption of EAFP is trying to execute the code to see what happens: if it works - great, if not, then raise an error.<br>
 												2. This way we accessing object only once, when trying to retieve attribute on this.
 											</li>
 											<li>One more comparison EAFP vs LBYL:
@@ -507,7 +511,7 @@ id(list_1) == id(list_2)
 # False
 </pre>
 <!-- stop	-->
-											- <code>list_1</code> and <code>list_2</code> variables point to two different objects even though both list has the same values an are in the same sizes.
+											- <code>list_1</code> and <code>list_2</code> variables point to two different objects even though both list has the same values and they are in the same sizes.
 										</li>
 										<li>Naming strings:
 <!-- strat -->
@@ -521,7 +525,7 @@ id(str_1) == id(str_2)
 # True
 </pre>
 <!-- stop	-->
-											- <code>str_1</code> and <code>str_2</code> variables point to the same object in the memory.
+											- <code>str_1</code> and <code>str_2</code> variables point to the same object in the memory.<br>
 											- They are two different tags for the same object.
 										</li>
 									</ul>
