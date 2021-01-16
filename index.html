@@ -491,7 +491,42 @@ except KeyError as e:
 								<div class="container">
 									<h3>Demo</h3>
 
-									<h5>is operator</h5>
+									<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Varaiables name objects in the memory</b></p>
+
+									<h5>Naming different objects:</h5>
+									<ul>
+										<li>Naming lists:
+<!-- strat -->
+<pre>
+list_1 = [1,2,3]
+list_2 = [1,2,3]
+
+id(list_1) == id(list_2)
+----------------
+# output
+# False
+</pre>
+<!-- stop	-->
+											- <code>list_1</code> and <code>list_2</code> variables point to two different objects even though both list has the same values an are in the same sizes.
+										</li>
+										<li>
+<!-- strat -->
+<pre>
+str_1 = "Artur"
+str_2 = "Artur"
+
+id(str_1) == id(str_2)
+----------------
+# output
+# True
+</pre>
+<!-- stop	-->
+											- <code>str_1</code> and <code>str_2</code> variables point to the same object in the memory.
+											- They are two different tags for the same object.
+										</li>
+									</ul>
+
+									<h5>is operator:</h5>
 									<ul>
 										<li>Returns TRUE if two variables point to the same object:
 <!-- strat -->
@@ -518,7 +553,8 @@ print(a is c)
 										</li>
 									</ul>
 
-									<h5>Immutability:</h5>
+									<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Immutability</b></p>
+
 									<ul>
 										<li>Immutability means with every change to variable, a new object is being created.</li>
 										<li>Integers are immutable:
@@ -608,7 +644,8 @@ print(id(t2))
 										</li>
 									</ul>
 
-									<h5>Mutability:</h5>
+									<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Mutability</b></p>
+
 									<ul>
 										<li>When mutating a mutable object, we work with the same object all the time (in the same place of memory).</li>
 										<li>List are mutable:
@@ -636,7 +673,7 @@ print(id(list2))
 										- because of mutable nature of Python list, when appending, we still append to the same object no matter which variable we use to refer to it.
 										</li>
 										<li>Let see short comparison of mutability with immutability:
-											<br>
+											<br><br>
 											<table>
 												<thead>
 													<tr>
@@ -687,7 +724,7 @@ print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
 											- Function creates empty list by default when we don't pass a list during the function's call.<br>
 											- Function <code>add_employee</code> creates empty list by default only once. As the list is a mutable object, it's being mutated by the function on every call.
 										</li>
-										<li>Setting default list as None
+										<li>Setting default list as <b>None</b>:
 <!-- start -->
 <pre>
 def <span style="color:#00ffea;">add_employee(</span>emp, emp_list=None<span style="color:#00ffea;">)</span>:
@@ -713,8 +750,7 @@ print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
 										</li>
 									</ul>
 
-									<h5>Passing parameters to a function:</h5>
-									<br>
+									<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Passing parameters to a function</b></p>
 									<table>
 										<thead>
 											<tr>
@@ -737,7 +773,7 @@ print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
 											</tr>
 											<tr>
 												<td>When immutable object being passed like string, integer, tuple.</td>
-												<td>When mutable object being passed like lists.</td>
+												<td>When mutable object being passed like a list.</td>
 											</tr>
 										</tbody>
 									</table>
@@ -863,12 +899,12 @@ fun(my_list)
 # <span style="background-color:#3976b3;">43522123</span>
 </pre>
 <!-- end -->
-											- Variable <code>my_list</code> is local to the <code>fun</code> function.<br>
-											- Variable <code>my_list</code> is in the global scope outside the <code>func</code>.<br>
-											- By <code>my_list = [10, 11, 12, 13, 14]</code> we create a local object of <code>[10, 11, 12, 13, 14]</code> in the memory.<br>
+											- Variable <code>my_list</code> is in the local scope in the <code>fun</code>.<br>
+											- Variable <code>my_list</code> is in the global scope outside the <code>fun</code>.<br>
+											- By <code>my_list = [10, 11, 12, 13, 14]</code> we create the local list object in the memory.<br>
 											- However, the object outside the function stays untouched.<br>
-											- In the local scope of the function <code>my_list</code> tags object: <code>[10, 11, 12, 13, 14]</code>.<br>
-											- In the global scope <code>my_list</code> tags object: <code>[1, 2, 3, 4, 5]</code>.
+											- In the local scope of the function, <code>my_list</code> tags object: <code>[10, 11, 12, 13, 14]</code>.<br>
+											- In the global scope outside the function, <code>my_list</code> tags object: <code>[1, 2, 3, 4, 5]</code>.
 										</li>
 									</ul>
 
