@@ -76,11 +76,7 @@ def add(x,y):
   return x + y
 
 add
-
-----------
-# output
 # &ltfunction add at 0x002F6850&gt
-
 </pre>
 <!-- end -->
 												- Python interpreter can tell us where the function as the object is located in the memeory (output above).
@@ -122,10 +118,8 @@ def my_map(func, lst):
 	return result
 
 squares = my_map(square, [1,2,3,4,5])
-print(squares)
 
----------------
-# output
+squares
 # [1,4,9,16,25]
 </pre>
 <!-- end -->
@@ -135,10 +129,8 @@ print(squares)
 <!-- start -->
 <pre>
 sream = print
-scream("Hello!")
 
------------------
-# output
+scream("Hello!")
 # Hello!
 </pre>
 <!-- end -->
@@ -506,8 +498,6 @@ list_1 = [1,2,3]
 list_2 = [1,2,3]
 
 id(list_1) == id(list_2)
-----------------
-# output
 # False
 </pre>
 <!-- stop	-->
@@ -520,8 +510,6 @@ str_1 = "Artur"
 str_2 = "Artur"
 
 id(str_1) == id(str_2)
-----------------
-# output
 # True
 </pre>
 <!-- stop	-->
@@ -538,13 +526,13 @@ id(str_1) == id(str_2)
 a = 'Hello World'
 c = a
 
-print(type(a))
+type(a)
 # &ltclass 'str'&gt
 
 id(a) == id(c)
 # True
 
-print(a is c)
+a is c
 # True
 </pre>
 <!-- stop	-->
@@ -624,10 +612,10 @@ list1 = [1,2,3,4]
 list2 = list1
 list1.append(10)
 
-print(list1)
+list1
 # [1,2,3,4,10]
 
-print(list2)
+list2
 # [1,2,3,4,10]
 
 id(list1) == id(list2)
