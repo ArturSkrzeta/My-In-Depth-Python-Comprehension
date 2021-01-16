@@ -292,6 +292,8 @@ class <span style="color:#00ffea;">User</span>:
 											</li>
 										</ul>
 
+										<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Regular methods, class methods, static methods</b></p>
+
 										<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Getters and setters</b></p>
 
 										<ul>
@@ -357,6 +359,36 @@ if __name__ == "__main__":
 											</li>
 											<li>Going with decorators and getting rid of getters and setters traditional methods makes a class shorter and running faster.</li>
 											<li>This is perfect solution for dynamic languages, however not allowed in a compiled language.</li>
+											<li>Here comes another example that with <code>@property</code> decorator we can access method as an attribute:
+<!-- start -->
+<pre>
+class <span style="color:#00ffea;">Employee</span>:
+
+  def __init__(self, first, last):
+    self.first = first
+    self.last = last
+
+  @property
+  def <span style="color:#ff6fcb;">company_email(</span>self<span style="color:#ff6fcb;">)</span>:
+    <span style="background-color:#ad5353;">return f'{self.first.lower()}.{self.last.lower()}@company.com'</span>
+
+  @property
+  def <span style="color:#ffbf00;">full_name(</span>self<span style="color:#ffbf00;">)</span>:
+    <span style="background-color:#3976b3;">return f'{self.first} {self.last}'</span>
+
+
+e = <span style="color:#00ffea;">Employee(</span>'John', 'Smith'<span style="color:#00ffea;">)</span>
+e.<span style="color:#ff6fcb;">full_name</span>
+# <span style="background-color:#ad5353;">John Smith</span>
+
+e.<span style="color:#ffbf00;">company_email</span>
+# <span style="background-color:#3976b3;">john.smith@company.com</span>
+
+</pre>
+<!-- end -->
+												- Function <code>company_email</code> decorated with <code>@property</code> adds a special line of code to return a string in a proper form.<br>
+												- We can access returned value of <code>company_email</code> just like every instance's attributes.
+											</li>
 										</ul>
 
 										<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Easier to Ask Forgiveness than Permission (EAFP)</b></p>
