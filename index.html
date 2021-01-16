@@ -294,6 +294,24 @@ class <span style="color:#00ffea;">User</span>:
 
 										<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Regular methods, class methods, static methods</b></p>
 
+										<ul>
+											<li>Regular methods within a class take <b>self</b> as the first parameter. Regular methods manipulates object's data.</li>
+											<li>Class methods take <b>cls</b> as the first parameter. Class methods manipulates class's data. It can also play a role of alternatice constructor (more below)</li>
+											<li>Static methods takes nor <b>self</b> neither <b>cls</b> parameter. Static methods behaves like a regular function but they are included in a class body becasue of its logical connection to that class.</li>
+											<li>Code:
+<!-- start -->
+<pre>
+
+
+
+
+</pre>
+<!-- stop -->
+											</li>
+										</ul>
+
+
+
 										<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Getters and setters</b></p>
 
 										<ul>
@@ -376,18 +394,31 @@ class <span style="color:#00ffea;">Employee</span>:
   def <span style="color:#ffbf00;">full_name(</span>self<span style="color:#ffbf00;">)</span>:
     <span style="background-color:#3976b3;">return f'{self.first} {self.last}'</span>
 
+  @full_name.setter
+  def <span style="color:#ffbf00;">full_name(</span>self, name<span style="color:#ffbf00;">)</span>:
+    first, last = name.split(' ')
+    self.first = first
+    self.last = last
+
 
 e = <span style="color:#00ffea;">Employee(</span>'John', 'Smith'<span style="color:#00ffea;">)</span>
-e.<span style="color:#ff6fcb;">full_name</span>
+e.<span style="color:#ffbf00;">full_name</span>
 # <span style="background-color:#ad5353;">John Smith</span>
 
 e.<span style="color:#ffbf00;">company_email</span>
 # <span style="background-color:#3976b3;">john.smith@company.com</span>
 
+e.<span style="color:#ffbf00;">full_name</span> = 'Johnny Smith'
+e.first
+# Johnny
+
+e.<span style="color:#ff6fcb;">company_email</span>
+# <span style="background-color:#3976b3;">johnny.smith@company.com</span>
 </pre>
 <!-- end -->
 												- Function <code>company_email</code> decorated with <code>@property</code> adds a special line of code to return a string in a proper form.<br>
-												- We can access returned value of <code>company_email</code> just like every instance's attributes.
+												- We can access returned value of <code>company_email</code> just like every instance's attributes.<br>
+												- With this line of code: <code>e.full_name = 'Johnny Smith'</code> we make use of the setter that establish <code>self.first</code> and <code>self.last</code> due to the logic it includes.
 											</li>
 										</ul>
 
