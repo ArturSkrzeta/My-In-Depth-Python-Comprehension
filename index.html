@@ -57,7 +57,7 @@
 												Almost everything is executable during run-time of code.
 												This is in opostion to Java or C where entire code is complied by the compiler to the machine's bucekt of bits before it runs.
 											</li>
-											<li>For example Python's class in simply executable code during runtime:
+											<li>For example Python's class is simply executable code during runtime:
 												<br>
 <!-- start -->
 <pre>
@@ -108,16 +108,16 @@ add
 													- function can be passed as an argument to another function.<br>
 <!-- start -->
 <pre>
-def square(x):
+def <span style="color:#00ffea;">square(</span>x<span style="color:#00ffea;">)</span>:
   return x*x
 
-def my_map(func, lst):
+def <span style="color:#ff6fcb;">my_map(</span>func, lst<span style="color:#ff6fcb;">)</span>
   result = []
-	for i in lst:
+  for i in lst:
     result.append(func(i))
-	return result
+  return result
 
-squares = my_map(square, [1,2,3,4,5])
+squares = <span style="color:#ff6fcb;">my_map(</span><span style="color:#00ffea;">square</span>, [1,2,3,4,5]<span style="color:#ff6fcb;">)</span>
 
 squares
 # [1,4,9,16,25]
@@ -137,15 +137,15 @@ scream("Hello!")
 													- function can be returned by another function,<br>
 <!-- start -->
 <pre>
-def outer_func()
+def <span style="color:#00ffea;">outer_func()</span>
   message = "Hello!"
 
-  def inner_func():
+  def <span style="color:#ff6fcb;">inner_func()</span>:
     print(message)
 
-  return inner_func
+  return <span style="color:#ff6fcb;">inner_func</span>
 
-welcome_func = outer_func()
+welcome_func = <span style="color:#00ffea;">outer_func()</span>
 welcome_func()
 
 -------------
@@ -171,10 +171,10 @@ def <span style="color:#00ffea;">decorator_fun(</span>original_fun<span style="c
         return original_fun(*args,**kwargs)
     return <span style="color:#ff6fcb;">wrapper_fun</span>
 
-def display_info():
+def <span style="color:#ffbf00;">display_info()</span>:
     print('Displaying basic info')
 
-decorated_display_info = <span style="color:#00ffea;">decorator_fun(</span>display_info<span style="color:#00ffea;">)</span>
+decorated_display_info = <span style="color:#00ffea;">decorator_fun(</span><span style="color:#ffbf00;">display_info</span><span style="color:#00ffea;">)</span>
 decorated_display_info()
 
 --------------
@@ -192,10 +192,10 @@ decorated_display_info()
 <!-- start -->
 <pre>
 @decorator_fun
-def display_info():
+def <span style="color:#ffbf00;">display_info()</span>:
     print('Displaying basic info')
 
-display_info()
+<span style="color:#ffbf00;">display_info()</span>
 
 -------------
 # output
@@ -266,7 +266,7 @@ scream("Hello!")
 											<li>
 <!-- start -->
 <pre>
-class User:
+class <span style="color:#00ffea;">User</span>:
 
   def __init__(self, name, surname):
     self.name = name
@@ -661,15 +661,15 @@ id(list1) == id(list2)
 def <span style="color:#00ffea;">add_employee(</span>emp, emp_list=[]<span style="color:#00ffea;">)</span>:
   emp_list.append(emp)
 
-print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
+<span style="color:#00ffea;">add_employee</span>.__defaults__
 # ([],)
 
 <span style="color:#00ffea;">add_employee(</span>'Artur'<span style="color:#00ffea;">)</span>
-print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
+<span style="color:#00ffea;">add_employee</span>.__defaults__
 # (['Artur'],)
 
 <span style="color:#00ffea;">add_employee(</span>'John'<span style="color:#00ffea;">)</span>
-print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
+<span style="color:#00ffea;">add_employee</span>.__defaults__
 # (['Artur', 'John'],)
 
 </pre>
@@ -686,17 +686,16 @@ def <span style="color:#00ffea;">add_employee(</span>emp, emp_list=None<span sty
   emp_list.append(emp)
   return emp_list
 
-print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
+<span style="color:#00ffea;">add_employee</span>.__defaults__
 # (None,)
 
 <span style="color:#00ffea;">add_employee(</span>'Artur'<span style="color:#00ffea;">)</span>
-print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
+<span style="color:#00ffea;">add_employee</span>.__defaults__
 # (None,)
 
 <span style="color:#00ffea;">add_employee(</span>'John'<span style="color:#00ffea;">)</span>
-print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
+<span style="color:#00ffea;">add_employee</span>.__defaults__
 # (None,)
-
 </pre>
 <!-- stop -->
 											- if condition in the <code>add_employee</code> function checks if a list passed to the function, if not then <code>emp_list is None</code> is <code>True</code> and it creates a new empty object list instead
