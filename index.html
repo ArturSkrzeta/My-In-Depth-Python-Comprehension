@@ -50,7 +50,23 @@
 										<h3>Intro</h3>
 										<p style="text-align: justify;">In this section, I describe all my knowledge on Python I have managed to gather so far. It contains Python pure architecture, concepts and language-specific properties.</p>
 
-										<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Python</b></p>
+										<h5>You can navigate to following concepts here:</h5>
+										<ul>
+											<a href="#python"><li>Python general info</li></a>
+											<a href="#first_class_object"><li>First class object</li></a>
+											<a href="#decorators"><li>Decorators</li></a>
+											<a href="#namespace"><li>Namespace</li></a>
+											<a href="#oop"><li>Object-oriented programming</li></a>
+											<a href="#methods"><li>Regular, class and static methods</li></a>
+											<a href="#getters_and_settters"><li>Getters and setters</li></a>
+											<a href="#eafp"><li>Easier to Ask Forgiveness than Permission (EAFP)</li></a>
+											<a href="#variables"><li>Varaiables name objects in the memory</li></a>
+											<a href="#immutability"><li>Immutability</li></a>
+											<a href="#mutability"><li>Mutability</li></a>
+											<a href="#passing_parameters"><li>Passing by value vs by reference</li></a>
+										</ul>
+
+										<p id="python" style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Python</b></p>
 
 										<ul>
 											<li>Pyhon is the interpreted programming language and its interpreter runs code from top to bottom, from right to left linearly.
@@ -102,7 +118,7 @@ add
 													</tbody>
 												</table>
 											</li>
-											<li>First class object:
+											<li id="first_class_object">First class object:
 													<br>
 													- function can be treated like an object,<br>
 													- function can be passed as an argument to another function.<br>
@@ -160,7 +176,7 @@ welcome_func()
 														Closure has an access to that variable even after the outer function has finished executing.
 														In this case, <code>inner_func</code> can access <code>member</code> variable in the local scope of <code>outer_fun</code>.
 											</li>
-											<li>Decorators:
+											<li id="decorators">Decorators:
 												<br>
 												- Decorator is a function that takes another functions as an argument, extends its functionality and returns another function without altering the original function's code that was passed in.<br>
 <!-- start -->
@@ -208,7 +224,7 @@ def <span style="color:#ffbf00;">display_info()</span>:
 										</ul>
 
 
-										<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Namespace</b></p>
+										<p id="namespace" style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Namespace</b></p>
 
 										<ul>
 											<li>There is a variable scope hierarchy:
@@ -249,7 +265,7 @@ scream("Hello!")
 											</li>
 										</ul>
 
-										<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Object-oriented programming</b></p>
+										<p id="oop" style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Object-oriented programming</b></p>
 
 										<ul>
 											<li>Object is an entity encapsulating data with methods for manipulating the data.</li>
@@ -292,7 +308,7 @@ class <span style="color:#00ffea;">User</span>:
 											</li>
 										</ul>
 
-										<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Regular methods, class methods, static methods</b></p>
+										<p id="methods" style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Regular methods, class methods, static methods</b></p>
 
 										<ul>
 											<li>Regular methods within a class take <b>self</b> as the first parameter. Regular methods manipulates object's data.</li>
@@ -312,7 +328,7 @@ class <span style="color:#00ffea;">User</span>:
 
 
 
-										<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Getters and setters</b></p>
+										<p id="getters_and_settters" style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Getters and setters</b></p>
 
 										<ul>
 											<li><b>Getters ('accessors')</b> and <b>setters ('mutators')</b> are used in OOP for aplying the encapsulation principle.</li>
@@ -422,7 +438,7 @@ e.<span style="color:#ff6fcb;">company_email</span>
 											</li>
 										</ul>
 
-										<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Easier to Ask Forgiveness than Permission (EAFP)</b></p>
+										<p id="eafp" style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Easier to Ask Forgiveness than Permission (EAFP)</b></p>
 
 										<ul>
 											<li>When you ask for a permission then you have to access object multiple tims as opposed to asking for forgiveness where you access object once.</li>
@@ -550,7 +566,7 @@ except KeyError as e:
 								<div class="container">
 									<h3>Demo</h3>
 
-									<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Varaiables name objects in the memory</b></p>
+									<p id="variables" style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Varaiables name objects in the memory</b></p>
 
 									<h5>Naming different objects:</h5>
 									<ul>
@@ -604,7 +620,7 @@ a is c
 										</li>
 									</ul>
 
-									<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Immutability</b></p>
+									<p id="immutability" style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Immutability</b></p>
 
 									<ul>
 										<li>Immutability means with every change to variable, a new object is being created.</li>
@@ -664,7 +680,7 @@ id(t1) == id(t2)
 										</li>
 									</ul>
 
-									<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Mutability</b></p>
+									<p id="mutability" style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Mutability</b></p>
 
 									<ul>
 										<li>When mutating a mutable object, we work with the same object all the time (in the same place of memory).</li>
@@ -765,7 +781,7 @@ def <span style="color:#00ffea;">add_employee(</span>emp, emp_list=None<span sty
 										</li>
 									</ul>
 
-									<p style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Passing parameters to a function</b></p>
+									<p id="passing_parameters" style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Passing parameters to a function</b></p>
 									<table>
 										<thead>
 											<tr>
