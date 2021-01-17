@@ -314,7 +314,7 @@ class <span style="color:#00ffea;">User</span>:
 											<li>Regular methods within a class take <b>self</b> as the first parameter. Regular methods manipulates object's data.</li>
 											<li>Class methods take <b>cls</b> as the first parameter. Class methods manipulates class's data. It can also play a role of alternatice constructor (more below)</li>
 											<li>Static methods takes nor <b>self</b> neither <b>cls</b> parameter. Static methods behaves like a regular function but they are included in a class body becasue of its logical connection to that class.</li>
-											<li>Classmethods:
+											<li>Class methods:
 <!-- start -->
 <pre>
 class <span style="color:#00ffea;">User</span>:
@@ -342,46 +342,52 @@ user_2.email
 												- object <code>user_1</code> is created using <code>__init__</code> method that populates object's attributes wiht passed arguments.<br>
 												- object <code>user_2</code> is created using <code>create_user_from_string</code> classmethod which is an alternative constructor that can instantiate a class object with proper attributes.
 											</li>
-											<li>Staticmethods:
+											<li>Static methods:
 <!-- start -->
 <pre>
 from datetime import date
 
-class User:
+class <span style="color:#00ffea;">User</span>:
 
-    def __init__(self, first, last):
+    def __init__(self, first, last, gold):
         self.first = first
         self.last = last
-        self.gold = 0
+        self.gold = gold
         self.email = f'{first.lower()}.{last.lower()}@game.com'
 
-    <span style="color:#ff6fcb;">@staticmethod</span>
-    def is_workday(day):
+    <span style="color:#6fff75;">@staticmethod</span>
+    def <span style="color:#ffbf00;">is_workday(</span>day<span style="color:#ffbf00;">)</span>:
         if day.weekday() == 5 or day.weekday() == 6:
-            print("Bonus granted!")
             return False
         return True
 
-    @property
-    def gold_amount_on_start(self):
-        return self.gold
-
-    @gold_amount_on_start.setter
-    def gold_amount_on_start(self, amount):
-        if User.is_workday(date.today()):
-            self.gold = amount
+    <span style="color:#6fff75;">@property</span>
+    def gold(self):
+        if <span style="color:#00ffea;">User</span>.<span style="color:#ffbf00;">is_workday(</span>date.today()<span style="color:#ffbf00;">)</span>:
+            return self.<span style="color:#ff6fcb;">gold_with_bonus</span>
         else:
-            self.gold = amount + 1000
+            return self.<span style="color:#ff6fcb;">gold_with_bonus</span> - 1000
 
-user_1 = User('Artur', 'Skrzeta')
-print(user_1.gold)
-print(user_1.gold_amount_on_start)
+    <span style="color:#6fff75;">@gold.setter</span>
+    def gold(self, gold):
+        if <span style="color:#00ffea;">User</span>.<span style="color:#ffbf00;">is_workday(</span>date.today()<span style="color:#ffbf00;">)</span>:
+            self.<span style="color:#ff6fcb;">gold_with_bonus</span> = gold
+        else:
+            self.<span style="color:#ff6fcb;">gold_with_bonus</span> = gold + 1000
 
-user_1.gold_amount_on_start = 2000
-print(user_1.gold_amount_on_start)
-print(user_1.gold)
+user_1 = <span style="color:#00ffea;">User(</span>'Artur', 'Skrzeta', 2000<span style="color:#00ffea;">)</span>
+
+user_1.gold
+# 2000
+
+user_1.<span style="color:#ff6fcb;">gold_with_bonus</span>
+# 3000
 </pre>
 <!-- stop -->
+												- Static method connects to the class logic of assigning the bounes to the user's account.<br>
+												- When account created on sunday or saturday, it gets 1000 of additional gold.<br>
+												- The instance's variable of <code>gold</code> stays with 2000 as it was initialized with such value.<br>
+												- However, the instance was created on the weeknd so the variable <code>gold_with_bonus</code> gets 3000.
 											</li>
 										</ul>
 
