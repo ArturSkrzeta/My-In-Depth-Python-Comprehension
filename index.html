@@ -364,14 +364,14 @@ class <span style="color:#00ffea;">User</span>:
     <span style="color:#6fff75;">@property</span>
     def gold(self):
         if <span style="color:#00ffea;">User</span>.<span style="color:#ffbf00;">is_workday(</span>date.today()<span style="color:#ffbf00;">)</span>:
-            return self.<span style="color:#ff6fcb;">gold_with_bonus</span>
+            return self.<span style="color:#ff6fcb;">gold_with_bonus</span> - 100
         else:
             return self.<span style="color:#ff6fcb;">gold_with_bonus</span> - 1000
 
     <span style="color:#6fff75;">@gold.setter</span>
     def gold(self, gold):
         if <span style="color:#00ffea;">User</span>.<span style="color:#ffbf00;">is_workday(</span>date.today()<span style="color:#ffbf00;">)</span>:
-            self.<span style="color:#ff6fcb;">gold_with_bonus</span> = gold
+            self.<span style="color:#ff6fcb;">gold_with_bonus</span> = gold + 100
         else:
             self.<span style="color:#ff6fcb;">gold_with_bonus</span> = gold + 1000
 
@@ -386,6 +386,7 @@ user_1.<span style="color:#ff6fcb;">gold_with_bonus</span>
 <!-- stop -->
 												- Static method connects to the class logic of assigning the bonuses to the user's account.<br>
 												- When account created on sunday or saturday, it gets 1000 of additional gold.<br>
+												- When account created on working day, it gets 100 of additional gold.<br>
 												- The instance's variable of <code>gold</code> stays with 2000 as it was initialized with such value.<br>
 												- However, the instance was created on the weeknd so the variable <code>gold_with_bonus</code> gets 3000.
 											</li>
