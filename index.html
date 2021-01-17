@@ -314,13 +314,72 @@ class <span style="color:#00ffea;">User</span>:
 											<li>Regular methods within a class take <b>self</b> as the first parameter. Regular methods manipulates object's data.</li>
 											<li>Class methods take <b>cls</b> as the first parameter. Class methods manipulates class's data. It can also play a role of alternatice constructor (more below)</li>
 											<li>Static methods takes nor <b>self</b> neither <b>cls</b> parameter. Static methods behaves like a regular function but they are included in a class body becasue of its logical connection to that class.</li>
-											<li>Code:
+											<li>Classmethods:
 <!-- start -->
 <pre>
+class <span style="color:#00ffea;">User</span>:
 
+    def __init__(self, first, last, gold):
+        self.first = first
+        self.last = last
+        self.<span style="background-color:#ad5353;">email = f'{first.lower()}.{last.lower()}@company.com'</span>
 
+    <span style="color:#ff6fcb;">@classmethod</span>
+    def <span style="color:#6fff75;">create_user_from_string(</span><span style="color:#ffbf00;">cls</span>, str<span style="color:#6fff75;">)</span>:
+        first, last, gold = str.split("-")
+        return <span style="color:#ffbf00;">cls(</span>first, last, int(gold)<span style="color:#ffbf00;">)</span>
 
+user_1 = <span style="color:#00ffea;">User(</span>'Artur', 'Skrzeta', 1000<span style="color:#00ffea;">)</span>
+user_2 = <span style="color:#00ffea;">User</span>.<span style="color:#6fff75;">create_user_from_string(</span>'Jan-Nowak-2000'<span style="color:#6fff75;">)</span>
 
+user_1.email
+# <span style="background-color:#ad5353;">artur.skrzeta@company.com</span>
+
+user_2.email
+# <span style="background-color:#ad5353;">jan.nowak@company.com</span>
+</pre>
+<!-- stop -->
+												- object <code>iser_1</code> is created using <code>__init__</code> methods that populates object's attribute wiht passed arguments.<br>
+												- object <code>user_2</code> is created using <code>create_user_from_string</code> classmethod which is an alternative constructor that can instantiate class object with peorper attributes.
+											</li>
+											<li>Staticmethods:
+<!-- start -->
+<pre>
+from datetime import date
+
+class User:
+
+    def __init__(self, first, last):
+        self.first = first
+        self.last = last
+        self.gold = 0
+        self.email = f'{first.lower()}.{last.lower()}@game.com'
+
+    <span style="color:#ff6fcb;">@staticmethod</span>
+    def is_workday(day):
+        if day.weekday() == 5 or day.weekday() == 6:
+            print("Bonus granted!")
+            return False
+        return True
+
+    @property
+    def gold_amount_on_start(self):
+        return self.gold
+
+    @gold_amount_on_start.setter
+    def gold_amount_on_start(self, amount):
+        if User.is_workday(date.today()):
+            self.gold = amount
+        else:
+            self.gold = amount + 1000
+
+user_1 = User('Artur', 'Skrzeta')
+print(user_1.gold)
+print(user_1.gold_amount_on_start)
+
+user_1.gold_amount_on_start = 2000
+print(user_1.gold_amount_on_start)
+print(user_1.gold)
 </pre>
 <!-- stop -->
 											</li>
@@ -346,8 +405,6 @@ class <span style="color:#00ffea;">User</span>:
 <!-- start -->
 <pre>
 class <span style="color:#00ffea;">Circle()</span>:
-
-    version = '1.0.1'
 
     def __init__(self, radius):
         self.<span style="color:#f7e37e;">radius</span> = radius
@@ -434,7 +491,8 @@ e.<span style="color:#ff6fcb;">company_email</span>
 <!-- end -->
 												- Function <code>company_email</code> decorated with <code>@property</code> adds a special line of code to return a string in a proper form.<br>
 												- We can access returned value of <code>company_email</code> just like every instance's attributes.<br>
-												- With this line of code: <code>e.full_name = 'Johnny Smith'</code> we make use of the setter that establish <code>self.first</code> and <code>self.last</code> due to the logic it includes.
+												- With this line of code: <code>e.full_name = 'Johnny Smith'</code> we make use of the setter that establish <code>self.first</code> and <code>self.last</code> due to the logic it includes.<br>
+												- When we set <code>full_name</code> with setter, this variable cannot be put in the <code>__init__</code> as <code>self.full_name = ""</code> or <code>self.full_name = f'{first} {last}'</code>.
 											</li>
 										</ul>
 
