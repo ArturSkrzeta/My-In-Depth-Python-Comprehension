@@ -2238,7 +2238,14 @@ img {
 
 		ul li {
 			padding-left: 0.5em;
+			margin-bottom: 20px;
 		}
+
+		ul.navi li {
+			padding-left: 0.5em;
+			margin-bottom: 0px;
+		}
+
 
 		ul.alt {
 			list-style: none;
@@ -2487,9 +2494,6 @@ ul.features li {
 		width: 100%;
 	}
 
-td {
-  width: 25% ;
-}
 		table tbody tr {
 			border: solid 2px #f4f4f4;
 			border-left: 0;
