@@ -72,7 +72,7 @@
 											<li>Pyhon is the interpreted programming language and its interpreter runs code from top to bottom, from right to left linearly.
 												Almost everything is executable during run-time of code.
 												This is in opostion to Java or C where entire code is complied by the compiler to the machine's bucekt of bits before it runs.
-											</li>
+											</li><br>
 											<li>For example Python's class is simply executable code during runtime:
 												<br>
 <!-- start -->
@@ -83,7 +83,7 @@ for _ in range(10)
 </pre>
 <!-- end -->
 												- The code above defines <code>class Base</code> 10 times as the for loop goes.
-											</li>
+											</li><br>
 											<li>Everything in Python is an object:
 												<br>
 <!-- start -->
@@ -96,7 +96,7 @@ add
 </pre>
 <!-- end -->
 												- Python interpreter can tell us where the function as the object is located in the memeory (output above).
-											</li>
+											</li><br>
 											<li>Python supports both Object-oriented Programming (OOP) and Functional Programming (FP):
 												<br><br>
 												<table>
@@ -141,7 +141,8 @@ squares
 <!-- end -->
 													✔ <code>square</code> function has been passed to the <code>my_map</code> unexecuted (without brackets).<br>
 													✔ It's being executed later in <code>my_map</code>'s body for every item in the passed list.<br>
-													- function can be assigned to a variable,<br>
+													<br>
+													- function can be assigned to a variable:
 <!-- start -->
 <pre>
 sream = print
@@ -149,8 +150,9 @@ sream = print
 scream("Hello!")
 # Hello!
 </pre>
+<br>
 <!-- end -->
-													- function can be returned by another function,<br>
+													- function can be returned by another function:<br>
 <!-- start -->
 <pre>
 def <span style="color:#00ffea;">outer_func()</span>
@@ -176,6 +178,7 @@ welcome_func()
 														Closure has an access to that variable even after the outer function has finished executing.
 														In this case, <code>inner_func</code> can access <code>member</code> variable in the local scope of <code>outer_fun</code>.
 											</li>
+											<br>
 											<li id="decorators">Decorators:
 												<br>
 												- Decorator is a function that takes another functions as an argument, extends its functionality and returns another function without altering the original function's code that was passed in.<br>
@@ -204,6 +207,7 @@ decorated_display_info()
 												✔ <code>decorator_fun(display_info)</code> returns <code>wrapper_fun</code> that is waiting to be executed and remembers <code>display_info</code> function as a passed argument to the decorator.<br>
 												✔ Executing <code>decorated_display_info()</code> executes <code>wrapper_fun</code> returining <code>original_fun</code> being executed as well.
 											</li>
+											<br>
 											<li>Pythonic way to use decorator:
 <!-- start -->
 <pre>
@@ -233,8 +237,8 @@ def <span style="color:#ffbf00;">display_info()</span>:
 												2. Enclosing scope (local scope of outer (enclosing) function).<br>
 												3. Global scope (top level of a module).<br>
 												4. Built-in.
-											</li>
-											<li>Local scope within a function saves us from using and, most important, from overwriting global variables.</li>
+											</li><br>
+											<li>Local scope within a function saves us from using and, most important, from overwriting global variables.</li><br>
 											<li>Working with namesapces:
 <!-- start -->
 <pre>
@@ -249,7 +253,7 @@ scream("Hello!")
 												- When top-level assignment - we assign variable to an object in <b>the global scope</b>.<br>
 												- When assignment within a function  - we assign variable to an object in <b>the local scope</b>.<br>
 												- Example: assignment <code>x = 5</code> within a function has no effect on the identifier <code>x</code> outside.
-											</li>
+											</li><br>
 											<li>Namespace resolution:
 												<br>
 												- Python searches three scopes for a called name:<br>
@@ -262,23 +266,23 @@ scream("Hello!")
 												2. class scope,<br>
 												3. supercalss within inheritance hierarchy,<br>
 												4. it keeps seraching, otherwise it raises <b>AttributeError</b> when not found.
-											</li>
+											</li><br>
 										</ul>
 
 										<p id="oop" style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Object-oriented programming</b></p>
 
 										<ul>
-											<li>Object is an entity encapsulating data with methods for manipulating the data.</li>
+											<li>Object is an entity encapsulating data with methods for manipulating the data.</li><br>
 											<li>Object implementation goes with:
 												<br>
 												- <u>instance dictionary</u>: holds state (data) and points to its class,<br>
 												- <u>class dictionary</u>: holds functions (methods) for manipulating the data.<br>
-											</li>
+											</li><br>
 											<li>Special method <b>__init__</b>:
 												<br>
 												- Calling the class during instatiation creates instance that is being referred by the class with a key-word <b>self</b>.<br>
 												- In fact, <b>__init__</b> is not a constructor, it is an initializer that takes an instance <b>self</b> and populates it with attributes (data) that <b>__init__</b> receives.
-											</li>
+											</li><br>
 											<li>
 <!-- start -->
 <pre>
@@ -293,11 +297,11 @@ class <span style="color:#00ffea;">User</span>:
 <!-- stop	-->
 												- The goal of instance variable <b>self</b> is to take unique data for the specific instance.<br>
 												- The goal of <b>__init__</b> is to populate the instance with that data.
-											</li>
+											</li><br>
 											<li>Inheritance:
 												<br>
 												- ...
-											</li>
+											</li><br>
 											<li>Subclass:
 												<br>
 												- A class that delegates work to another class (parentclass).<br>
@@ -305,15 +309,18 @@ class <span style="color:#00ffea;">User</span>:
 												- A sublcass points to ist parent due to flow: instance dictionary - > subclass dictionary -> parent-class dictionary.<br>
 												- Using subclasses can be used as a techique for code re-use.<br>
 												- In fact, a sublcass is in charge. It decides what work gets delegated.
-											</li>
+											</li><br>
 										</ul>
 
 										<p id="methods" style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Regular methods, class methods, static methods</b></p>
 
 										<ul>
-											<li>Regular methods within a class take <b>self</b> as the first parameter. Regular methods manipulates object's data.</li>
-											<li>Class methods take <b>cls</b> as the first parameter. Class methods manipulates class's data. It can also play a role of alternatice constructor (more below)</li>
-											<li>Static methods takes nor <b>self</b> neither <b>cls</b> parameter. Static methods behaves like a regular function but they are included in a class body becasue of its logical connection to that class.</li>
+											<li>Mehtods:
+												<br>
+												✔ <b>Regular methods</b> within a class take <b>self</b> as the first parameter. Regular methods manipulates object's data.<br>
+												✔ <b>Class methods</b> take <b>cls</b> as the first parameter. Class methods manipulates class's data. It can also play a role of alternatice constructor (more below).<br>
+												✔ <b>Static methods</b> takes nor <b>self</b> neither <b>cls</b> parameter. Static methods behaves like a regular function but they are included in a class body becasue of its logical connection to that class.<br>
+											</li><br>
 											<li>Class methods:
 <!-- start -->
 <pre>
@@ -341,7 +348,7 @@ user_2.email
 <!-- stop -->
 												- object <code>user_1</code> is created using <code>__init__</code> method that populates object's attributes wiht passed arguments.<br>
 												- object <code>user_2</code> is created using <code>create_user_from_string</code> classmethod which is an alternative constructor that can instantiate a class object with proper attributes.
-											</li>
+											</li><br>
 											<li>Static methods:
 <!-- start -->
 <pre>
