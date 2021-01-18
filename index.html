@@ -139,8 +139,8 @@ squares
 # [1,4,9,16,25]
 </pre>
 <!-- end -->
-													1. <code>square</code> function has been passed to the <code>my_map</code> unexecuted (without brackets).<br>
-													2. It's being executed later in <code>my_map</code>'s body for every item in the passed list.<br>
+													✔ <code>square</code> function has been passed to the <code>my_map</code> unexecuted (without brackets).<br>
+													✔ It's being executed later in <code>my_map</code>'s body for every item in the passed list.<br>
 													- function can be assigned to a variable,<br>
 <!-- start -->
 <pre>
@@ -169,9 +169,9 @@ welcome_func()
 # Hello!
 </pre>
 <!-- end -->
-												1. <code>outer_func</code> being executed returns <code>inner_func</code> that waits for its execution.<br>
-												2. <code>inner_func</code> is assigned to variable <code>welcome_func</code> which can be executed as the same as every function.<br>
-												3. <code>inner_func</code> is also so-called <b><u>closure</u></b> which is every inner function in the body of outer function.
+												✔ <code>outer_func</code> being executed returns <code>inner_func</code> that waits for its execution.<br>
+												✔ <code>inner_func</code> is assigned to variable <code>welcome_func</code> which can be executed as the same as every function.<br>
+												✔ <code>inner_func</code> is also so-called <b><u>closure</u></b> which is every inner function in the body of outer function.
 														Closure remembers and has access to variables in the local scope it was created.
 														Closure has an access to that variable even after the outer function has finished executing.
 														In this case, <code>inner_func</code> can access <code>member</code> variable in the local scope of <code>outer_fun</code>.
@@ -199,10 +199,10 @@ decorated_display_info()
 # Displaying basic info
 </pre>
 <!-- end -->
-												1. <code>wrapper_fun</code> is a closure that remembers passed argument to <code>decorator_fun</code> even though <code>decorator_fun</code> finishes execution first.<br>
-												2. Inside the <code>wrapper_fun</code> we append additional functionality before running original function.<br>
-												3. <code>decorator_fun(display_info)</code> returns <code>wrapper_fun</code> that is waiting to be executed and remembers <code>display_info</code> function as a passed argument to the decorator.<br>
-												4. Executing <code>decorated_display_info()</code> executes <code>wrapper_fun</code> returining <code>original_fun</code> being executed as well.
+												✔ <code>wrapper_fun</code> is a closure that remembers passed argument to <code>decorator_fun</code> even though <code>decorator_fun</code> finishes execution first.<br>
+												✔ Inside the <code>wrapper_fun</code> we append additional functionality before running original function.<br>
+												✔ <code>decorator_fun(display_info)</code> returns <code>wrapper_fun</code> that is waiting to be executed and remembers <code>display_info</code> function as a passed argument to the decorator.<br>
+												✔ Executing <code>decorated_display_info()</code> executes <code>wrapper_fun</code> returining <code>original_fun</code> being executed as well.
 											</li>
 											<li>Pythonic way to use decorator:
 <!-- start -->
@@ -219,7 +219,7 @@ def <span style="color:#ffbf00;">display_info()</span>:
 # Displaying basic info
 </pre>
 <!-- end -->
-												1. <code>@decorator_fun</code> means decorator applied that extend basic <code>display_info</code> function.
+												✔ <code>@decorator_fun</code> means decorator applied that extend basic <code>display_info</code> function.
 											</li>
 										</ul>
 
@@ -554,9 +554,9 @@ r = <span style="color:#ff6fcb;">Robot()</span>
 # This has to be a duck.
 </pre>
 <!-- stop -->
-												1. We can see that object <code>d</code> is an insatnce of <code>Duck</code> type so we get the permission to execute Duck's methods on the objet.<br>
-												2. We can see that object <code>r</code> is not an instance of <code>Duck</code> type so we don't get the permission to execute Duck's methods on it.<br>
-												3. Notice that we have to access an object each time to check its type, and once we get the permission then we access the same object one more time.
+												✔ We can see that object <code>d</code> is an insatnce of <code>Duck</code> type so we get the permission to execute Duck's methods on the objet.<br>
+												✔ We can see that object <code>r</code> is not an instance of <code>Duck</code> type so we don't get the permission to execute Duck's methods on it.<br>
+												✔ Notice that we have to access an object each time to check its type, and once we get the permission then we access the same object one more time.
 											</li>
 											<li>Let's try to ask for forgiveness with <b>try except block</b>:
 <!-- start -->
@@ -584,8 +584,8 @@ r = <span style="color:#ff6fcb;">Robot()</span>
 # 'Robot' object has no attribute 'quack'
 </pre>
 <!-- stop -->
-												1. The main assumption of EAFP is trying to execute the code to see what happens: if it works - great, if not, then raise an error.<br>
-												2. This way we accessing object only once, when trying to retieve attribute on this.
+												✔ The main assumption of EAFP is trying to execute the code to see what happens: if it works - great, if not, then raise an error.<br>
+												✔ This way we accessing object only once, when trying to retieve attribute on this.
 											</li>
 											<li>One more comparison EAFP vs LBYL:
 <!-- start -->
