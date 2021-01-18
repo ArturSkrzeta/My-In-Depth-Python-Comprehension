@@ -51,7 +51,7 @@
 										<p style="text-align: justify;">In this section, I describe all my knowledge on Python I have managed to gather so far. It contains Python pure architecture, concepts and language-specific properties.</p>
 
 										<h5>You can navigate to following concepts here:</h5>
-										<ul>
+										<ul class="navi">
 											<a href="#python"><li>Python general info</li></a>
 											<a href="#first_class_object"><li>First class object</li></a>
 											<a href="#decorators"><li>Decorators</li></a>
@@ -72,7 +72,7 @@
 											<li>Pyhon is the interpreted programming language and its interpreter runs code from top to bottom, from right to left linearly.
 												Almost everything is executable during run-time of code.
 												This is in opostion to Java or C where entire code is complied by the compiler to the machine's bucekt of bits before it runs.
-											</li><br>
+											</li>
 											<li>For example Python's class is simply executable code during runtime:
 												<br>
 <!-- start -->
@@ -83,7 +83,7 @@ for _ in range(10)
 </pre>
 <!-- end -->
 												- The code above defines <code>class Base</code> 10 times as the for loop goes.
-											</li><br>
+											</li>
 											<li>Everything in Python is an object:
 												<br>
 <!-- start -->
@@ -96,7 +96,7 @@ add
 </pre>
 <!-- end -->
 												- Python interpreter can tell us where the function as the object is located in the memeory (output above).
-											</li><br>
+											</li>
 											<li>Python supports both Object-oriented Programming (OOP) and Functional Programming (FP):
 												<br><br>
 												<table>
@@ -207,7 +207,7 @@ decorated_display_info()
 												✔ <code>decorator_fun(display_info)</code> returns <code>wrapper_fun</code> that is waiting to be executed and remembers <code>display_info</code> function as a passed argument to the decorator.<br>
 												✔ Executing <code>decorated_display_info()</code> executes <code>wrapper_fun</code> returining <code>original_fun</code> being executed as well.
 											</li>
-											<br>
+
 											<li>Pythonic way to use decorator:
 <!-- start -->
 <pre>
@@ -237,8 +237,8 @@ def <span style="color:#ffbf00;">display_info()</span>:
 												2. Enclosing scope (local scope of outer (enclosing) function).<br>
 												3. Global scope (top level of a module).<br>
 												4. Built-in.
-											</li><br>
-											<li>Local scope within a function saves us from using and, most important, from overwriting global variables.</li><br>
+											</li>
+											<li>Local scope within a function saves us from using and, most important, from overwriting global variables.</li>
 											<li>Working with namesapces:
 <!-- start -->
 <pre>
@@ -253,7 +253,7 @@ scream("Hello!")
 												- When top-level assignment - we assign variable to an object in <b>the global scope</b>.<br>
 												- When assignment within a function  - we assign variable to an object in <b>the local scope</b>.<br>
 												- Example: assignment <code>x = 5</code> within a function has no effect on the identifier <code>x</code> outside.
-											</li><br>
+											</li>
 											<li>Namespace resolution:
 												<br>
 												- Python searches three scopes for a called name:<br>
@@ -266,23 +266,23 @@ scream("Hello!")
 												2. class scope,<br>
 												3. supercalss within inheritance hierarchy,<br>
 												4. it keeps seraching, otherwise it raises <b>AttributeError</b> when not found.
-											</li><br>
+											</li>
 										</ul>
 
 										<p id="oop" style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Object-oriented programming</b></p>
 
 										<ul>
-											<li>Object is an entity encapsulating data with methods for manipulating the data.</li><br>
+											<li>Object is an entity encapsulating data with methods for manipulating the data.</li>
 											<li>Object implementation goes with:
 												<br>
 												- <u>instance dictionary</u>: holds state (data) and points to its class,<br>
 												- <u>class dictionary</u>: holds functions (methods) for manipulating the data.<br>
-											</li><br>
+											</li>
 											<li>Special method <b>__init__</b>:
 												<br>
 												- Calling the class during instatiation creates instance that is being referred by the class with a key-word <b>self</b>.<br>
 												- In fact, <b>__init__</b> is not a constructor, it is an initializer that takes an instance <b>self</b> and populates it with attributes (data) that <b>__init__</b> receives.
-											</li><br>
+											</li>
 											<li>
 <!-- start -->
 <pre>
@@ -297,11 +297,11 @@ class <span style="color:#00ffea;">User</span>:
 <!-- stop	-->
 												- The goal of instance variable <b>self</b> is to take unique data for the specific instance.<br>
 												- The goal of <b>__init__</b> is to populate the instance with that data.
-											</li><br>
+											</li>
 											<li>Inheritance:
 												<br>
 												- ...
-											</li><br>
+											</li>
 											<li>Subclass:
 												<br>
 												- A class that delegates work to another class (parentclass).<br>
@@ -309,7 +309,7 @@ class <span style="color:#00ffea;">User</span>:
 												- A sublcass points to ist parent due to flow: instance dictionary - > subclass dictionary -> parent-class dictionary.<br>
 												- Using subclasses can be used as a techique for code re-use.<br>
 												- In fact, a sublcass is in charge. It decides what work gets delegated.
-											</li><br>
+											</li>
 										</ul>
 
 										<p id="methods" style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Regular methods, class methods, static methods</b></p>
@@ -320,7 +320,7 @@ class <span style="color:#00ffea;">User</span>:
 												✔ <b>Regular methods</b> within a class take <b>self</b> as the first parameter. Regular methods manipulates object's data.<br>
 												✔ <b>Class methods</b> take <b>cls</b> as the first parameter. Class methods manipulates class's data. It can also play a role of alternatice constructor (more below).<br>
 												✔ <b>Static methods</b> takes nor <b>self</b> neither <b>cls</b> parameter. Static methods behaves like a regular function but they are included in a class body becasue of its logical connection to that class.<br>
-											</li><br>
+											</li>
 											<li>Class methods:
 <!-- start -->
 <pre>
@@ -348,7 +348,7 @@ user_2.email
 <!-- stop -->
 												- object <code>user_1</code> is created using <code>__init__</code> method that populates object's attributes wiht passed arguments.<br>
 												- object <code>user_2</code> is created using <code>create_user_from_string</code> classmethod which is an alternative constructor that can instantiate a class object with proper attributes.
-											</li><br>
+											</li>
 											<li>Static methods:
 <!-- start -->
 <pre>
@@ -404,9 +404,10 @@ user_1.<span style="color:#ff6fcb;">gold_with_bonus</span>
 										<p id="getters_and_settters" style="font-size:22px; border-bottom: 1px solid #cacaca; padding-bottom:10px; padding-top:50px;"><b>Getters and setters</b></p>
 
 										<ul>
-											<li><b>Getters ('accessors')</b> and <b>setters ('mutators')</b> are used in OOP for aplying the encapsulation principle.</li>
-											<li>Encapsulation means bundling attributes (data within a class) with the methods that operate on them.</li>
-											<li>According to encapsulation principle, the attributes of a class have to be set as private to hide and protect them from the external code.</li>
+											<li><b>Getters ('accessors')</b> and <b>setters ('mutators')</b> are used in OOP for aplying the encapsulation principle.
+													Encapsulation means bundling attributes (data within a class) with the methods that operate on them.
+													According to encapsulation principle, the attributes of a class have to be set as private to hide and protect them from the external code.
+											</li>
 											<li>Getters an setters simply dictate the way of accessing the class's private data.</li>
 											<li>In short, the getter is used for retrieving the data and the setter for changing the data within a class.</li>
 											<li>In Python the encapsulation matterw is solved as following:
@@ -462,8 +463,8 @@ if __name__ == "__main__":
 												- <code>self.radius</code> is accepted only during initialization but <code>diameter</code> is being stored within a class or instances.<br>
 												- <code>@property</code> and <code>@radius.setter</code> encapsulates <code>self.radius</code> and makes <code>diameter</code> attribute accessible for external code.
 											</li>
-											<li>Going with decorators and getting rid of getters and setters traditional methods makes a class shorter and running faster.</li>
-											<li>This is perfect solution for dynamic languages, however not allowed in a compiled language.</li>
+											<li>Going with decorators and getting rid of getters and setters traditional methods makes a class shorter and running faster.
+													This is perfect solution for dynamic languages, however not allowed in a compiled language.</li>
 											<li>Here comes another example that with <code>@property</code> decorator we can access method as an attribute:
 <!-- start -->
 <pre>
